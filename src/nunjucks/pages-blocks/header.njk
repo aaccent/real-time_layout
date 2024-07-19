@@ -1,0 +1,234 @@
+{% set submenu_items = [
+    { category: "Магазины" },
+    { category: "Рестрораны и бары" },
+    { category: "Офисы" },
+    { category: "Торговые отсровки" },
+    { category: "Конструктивные решения" },
+    { category: "Архитектурные решения" },
+    { category: "Электрика и освещение" },
+    { category: "Водоснабжение и водоотведение" },
+    { category: "Вентиляция и кондиционирование" },
+    { category: "Слаботочные сети" },
+    { category: "Проектирование вывески" }
+] %}
+
+{% set submenu_column = ["магазины", "рестораны и бары", "офисы", "торговые островки", "конструктивные решения", "архитектурные решения", "электрика и освещение"] %}
+
+{% macro Submenu(items) %}
+    <div class="header__submenu submenu">
+        <div class="submenu__backdrop"></div>
+        <div class="submenu__content">
+            <div class="container">
+                <div class="submenu__wrapper">
+                    <div class="submenu__list-wrapper">
+                        <ul class="header__submenu-list submenu__list">
+                            {% for item in items %}
+                            <li class="submenu__list-item">
+                                <span>{{ item.category }}</span>
+                                <div class="submenu__list-item-content">
+                                    <ul class="submenu__menu">
+                                        {% for i in range(0, 2) %}
+                                            <div class="submenu__menu-col">
+                                                {% for item in submenu_column %}
+                                                    <li class="submenu__menu-item">{{ item }}</li>
+                                                {% endfor %}
+                                            </div>
+                                        {% endfor %}
+                                    </ul>
+                                    <div class="submenu__image">
+                                        <img src="/images/submenu.png" alt="">
+                                    </div>
+                                </div>
+                                {# <div class="submenu__services">
+                                    <div class="submenu__services-cols">
+                                        <ul class="submenu__services-list">
+                                            {% for service in item.services.firstColumn %}
+                                                <li class="submenu__service-item">
+                                                    <a href="#" class="submenu__service-link">{{ service }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                        <ul class="submenu__services-list">
+                                            {% for service in item.services.secondColumn %}
+                                                <li class="submenu__service-item">
+                                                    <a href="#" class="submenu__service-link">{{ service }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    
+                                    </div>
+                                </div> #}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div>
+                        <object data="/images/submenu-icon.svg" type="image/svg+xml"></object>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro MobileMenu(menu_items) %}
+    <nav class="header__menu header__menu--mobile">
+        <div class="container">
+            <ul class="header__menu-list menu__list">
+                {% for item in menu_items %}
+                    <li class="header__menu-item menu__item">
+                        <a href="{{ item.href }}" class="header__menu-link menu__link">{{ item.label }}</a>
+                        {% if loop.index == 1 %}
+                            <object class="header__menu-arrow" data="/images/svg-icons/menu-arrow.svg" type="image/svg+xml"></object>
+                            <div class="header__submenu submenu">
+                                <ul class="submenu__list">
+                                    {% for item in submenu_items %}
+                                        <li class="submenu__item">
+                                            <a href="#" class="submenu__link">{{ item.category }}</a>
+                                            {% if loop.index == 1 %}
+                                                <div class="submenu__menu">
+                                                    <button class="submenu__back-button" type="button">
+                                                        <object data="/images/svg-icons/menu-arrow.svg" type="image/svg+xml"></object>
+                                                        <span>{{ item.category }}</span>
+                                                    </button>
+                                                    <ul class="submenu__menu-list">
+                                                        {% for item in submenu_column %}
+                                                            <li class="submenu__menu-item">
+                                                                <a href="#" class="submenu__menu-link">{{ item }}</a>
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {# <div class="menu__submenu submenu menu">
+                                <button class="menu__back-button">
+                                    <object data="/images/navigation-arrow.svg" type="image/svg+xml"></object>
+                                    <span>{{ item.category }}</span>
+                                </button>
+                                <ul class="menu__list">
+                                    {% for item in submenu_items %}
+                                        <li class="menu__item">
+                                            <a href="#" class="menu__link">{{item.category}}</a>
+                                            <button class="menu__arrow" type="button">
+                                                <object data="/images/menu-arrow.svg" type="image/svg+xml"></object>
+                                            </button>
+                                            <div class="menu__submenu submenu menu">
+                                                <div class="container">
+                                                    <button class="menu__back-button">
+                                                        <object data="/images/navigation-arrow.svg" type="image/svg+xml"></object>
+                                                        <span>{{ item.category }}</span>
+                                                    </button>
+                                                    <ul class="menu__list">
+                                                        {% for item in submenu__column %}
+                                                            <li class="menu__item">
+                                                                <a href="#" class="menu__link">{{ item }}</a>
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div> #}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="header__actions"></div>
+            <div class="header__contacts">
+                <div class="header__contacts-title">Контактная информация:</div>
+                <div class="header__contacts-links">
+                    <a href="tel:89153400110" class="header__phone">8 (915) 340 01 10</a>
+                    <a href="mailto:info@re-time.ru" class="header__mail">info@re-time.ru</a>
+                </div>
+                <div class="header__contacts-info">
+                    <div class="header__address">
+                        <span>Адрес:</span> г. Москва, Научный проезд, д. 19
+                    </div>
+                    <div class="header__operation-mode">
+                        <span>Режим работы:</span> Пн — Пт с 09:00 до 18:00
+                    </div>
+                </div>
+                <ul class="header__socials">
+                    <li class="header__social-item">
+                        <a href="#" class="header__social-link">
+                            <object data="/images/svg-icons/vk.svg" type="image/svg+xml"></object>
+                        </a>
+                    </li>
+                    <li class="header__social-item">
+                        <a href="#" class="header__social-link">
+                            <object data="/images/svg-icons/whatsapp.svg" type="image/svg+xml"></object>
+                        </a>
+                    </li>
+                    <li class="header__social-item">
+                        <a href="#" class="header__social-link">
+                            <object data="/images/svg-icons/telegram.svg" type="image/svg+xml"></object>
+                        </a>
+                    </li>
+                    <li class="header__social-item">
+                        <a href="#" class="header__social-link">
+                            <object data="/images/svg-icons/youtube.svg" type="image/svg+xml"></object>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endmacro %}
+
+{% macro Menu(items) %}
+    <nav class="header__menu header__menu--desktop">
+        <ul class="header__menu-list">
+            {% for item in items %}
+                <li class="header__menu-item">
+                {% if loop.index == 1 %}
+                    <span class="header__menu-label">{{ item.label}}</span>
+                    <object class="header__menu-arrow" data="/images/svg-icons/menu-arrow.svg" type="image/svg+xml"></object>
+                    {{ Submenu(submenu_items) }}
+                {% else %}
+                    <a href="{{ item.href }}" class="header__menu-link">{{ item.label }}</a>
+                {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+{% endmacro %}
+
+<header class="header">
+    <div class="header__container container">
+        <div class="header__main">
+            <a href="#" class="header__logo">
+                <object data="/images/logo.svg" type="image/svg+xml"></object>
+            </a>
+            <div class="header__city">
+                <div class="header__city-icon">
+                    <object data="/images/svg-icons/geo.svg" type="image/svg+xml"></object>
+                </div>
+                <div class="header__city-label">Москва</div>
+            </div>
+        </div>
+        {% set menu_items = [
+            {label: "Услуги", href: "#"},
+            {label: "Портфолио", href: "#"},
+            {label: "О компании", href: "#"},
+            {label: "Контакты", href: "#"}
+        ] %}
+        {{ Menu(menu_items )}}
+        {{ MobileMenu(menu_items) }}
+        <div class="header__actions">
+            <a href="tel:89153400110" class="header__phone">8 (915) 340 01 10</a>
+            <button class="header__button button button--black">
+                <span class="button__label">Консультация:</span>
+                <div class="button__arrow">
+                    <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object>
+                </div>
+            </button>
+        </div>
+        <div class="header__burger"></div>
+    </div>
+</header>

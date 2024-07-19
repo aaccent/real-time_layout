@@ -1,0 +1,51 @@
+.button {
+    border-radius: 35px;
+    // display: flex;
+    // align-items: center;
+    // gap: rem(25);
+    padding: rem(21) rem(73) rem(24) rem(30);
+    position: relative;
+    &__label {
+        font-weight: 600;
+        text-transform: lowercase;
+    }
+    &__arrow {
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        right: rem(17);
+        transform: translate(0, -50%);
+        width: rem(31);
+        height: rem(31);
+    }
+    &--black {
+        background-color: var(--black);
+        color: var(--white);
+        .button__arrow {
+            background-color: var(--white);
+            color: var(--red);
+        }
+    }
+    &--white {
+        background-color: var(--white);
+        color: var(--black);
+        .button__arrow {
+            background-color: var(--black);
+            color: var(--white);    
+        }
+    }
+    @include phone {
+        padding: rem(16.5) rem(62) rem(18.5) rem(25);
+        &__label {
+            font-size: rem(14);
+            line-height: calc(20 / 14);
+        }
+        &__arrow {
+            width: rem(28);
+            height: rem(28);
+        }
+    }
+}
