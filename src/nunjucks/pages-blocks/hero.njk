@@ -1,0 +1,96 @@
+{% macro Hero() %}
+    <div class="hero-slide">
+        <div class="hero-slide__content">
+            {# <div class="hero-slide__content-wrapper"> #}
+                <div class="hero-slide__title">Проектирование ресторанов, баров и кафе в торговых центрах</div>
+                <a href="#" class="hero-slide__link button button--white">
+                    <span class="button__label">Узнать подробнее</span>
+                    <div class="button__arrow">
+                        <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object>
+                    </div>
+                </a>
+                <ul class="hero-slide__desc">
+                    <li class="hero-slide__desc-item">от 2 месяцев</li>
+                    <li class="hero-slide__desc-item">под ключ</li>
+                    <li class="hero-slide__desc-item">от 4000 ₽/м²</li>
+                </ul>
+            {# </div> #}
+        </div>
+        <div class="hero-slide__image">
+            <img src="" alt="">
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro DescSlide() %}
+    <div class="hero-info">
+        <div class="hero-info__title">Проектирование ресторанов, баров и кафе в торговых центрах</div>
+        <a href="#" class="hero-info__button button button--white">
+            <span class="button__label">Узнать подробнее</span>
+            <div class="button__arrow">
+                <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object>
+            </div>
+        </a>
+        <ul class="hero-info__desc">
+            <li class="hero-info__desc-item">от 2 месяцев</li>
+            <li class="hero-info__desc-item">под ключ</li>
+            <li class="hero-info__desc-item">от 4000 ₽/м²</li>
+        </ul>
+    </div>
+{% endmacro %}
+
+{% macro GallerySlide(index) %}
+    <div class="hero__image">
+        <img src="/images/hero-gallery-0{{index}}.png" alt="">
+    </div>
+{% endmacro %}
+
+
+<section class="hero">
+    <div class="hero__container container">
+        <div class="hero__content-swiper swiper">
+            <div class="swiper-wrapper">
+                {% for i in range(1, 4) %}
+                    <div class="swiper-slide">
+                        {{ DescSlide() }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="hero__gallery-swiper swiper">
+            <div class="swiper-wrapper">
+                {% for i in range(1, 4) %}
+                    <div class="swiper-slide">
+                        {{ GallerySlide(i) }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {# <div class="hero__swiper swiper">
+            <div class="swiper-wrapper">
+                {% for item in range(1,5) %}
+                    <div class="swiper-slide">
+                        {{ Hero() }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div> #}
+        <div class="hero__thumb-swiper swiper">
+            <div class="swiper-wrapper">
+                {% for i in range(1, 4) %}
+                    <div class="swiper-slide">
+                        <img src="/images/hero-gallery-0{{i}}.png" alt="">
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-controls">
+                <div class="swiper-button-prev">
+                    <object data="/images/svg-icons/navigation-arrow.svg" type="image/svg+xml"></object>
+                </div>
+                <div class="swiper-button-next">
+                    <object data="/images/svg-icons/navigation-arrow.svg" type="image/svg+xml"></object>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -26,14 +26,14 @@ function lockBody() {
     if (lockPaddingElements && paddingValue) {
         lockPaddingElements.style.paddingRight = paddingValue + "px"
     }
-    document.body.classList.add("body_lock")
+    document.body.classList.add("_lock")
 }
 
 function unlockBody () {
     if (lockPaddingElements) {
         lockPaddingElements.style.paddingRight = ""
     }
-    document.body.classList.remove("body_lock")
+    document.body.classList.remove("_lock")
 }
 
 function openPopup(popup = undefined) {
@@ -125,6 +125,18 @@ function validateForm(form) {
 //     isMobile = true;
 // }
 
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+// We listen to the resize event
+window.addEventListener('resize', () => {
+  // We execute the same script as before
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+
 window.onload = function() {
 
     // Header
@@ -177,12 +189,10 @@ window.onload = function() {
     burgerMenuEl.addEventListener("click", () => {
         if (burgerMenuEl.classList.contains("header__burger--open")) {
             unlockBody()
-            Array.from(mobileMenuEl.querySelectorAll(".menu__list--submenu-open")).forEach(el => {
-                el.classList.remove("menu__list--submenu-open")
+            Array.from(mobileMenuEl.querySelectorAll(".header__menu-item._open")).forEach(el => {
+                el.classList.remove("_open")
             })
-            Array.from(mobileMenuEl.querySelectorAll(".menu--open")).forEach(el => {
-                el.classList.remove("menu--open")
-            })
+            mobileMenuEl.classList.remove("header__menu--submenu-open")
         } else {
             lockBody()
         }
@@ -431,4 +441,34 @@ window.onload = function() {
             closePopup()
         }
     })
+
+    if (window.Swiper) {
+        let heroThumbSwiper = new Swiper(".hero__thumb-swiper", {
+            slidesPerView: "auto",
+            spaceBetween: 5,
+        })
+        let heroGallerySwiper = new Swiper(".hero__gallery-swiper", {
+            slidesPerView: 1,
+            speed: 800,
+            loop: true,
+            effect: "fade",
+            crossFade: true,
+            thumbs: {
+                swiper: heroThumbSwiper,
+            },
+        })
+        let heroContentSwiper = new Swiper(".hero__content-swiper", {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            speed: 800,
+            loop: true,
+            navigation: {
+                nextEl: ".hero__thumb-swiper .swiper-button-next",
+                prevEl: ".hero__thumb-swiper .swiper-button-prev",
+            },
+        })
+
+        heroGallerySwiper.controller.control = heroContentSwiper
+        heroContentSwiper.controller.control = heroGallerySwiper
+    }
 }

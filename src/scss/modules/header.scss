@@ -5,6 +5,7 @@
     padding: rem(15) 0;
     position: relative;
     height: rem(95);
+    z-index: var(--header-z-index);
     &::before {
         background-color: var(--white);
         content: "";
@@ -106,7 +107,7 @@
             bottom: 0;
             width: 100%;
             height: calc(100% - rem(75));
-            transform: translate(0, -100%);
+            transform: translate(0, -120%);
             transition: transform 0.3s ease 0s;
             z-index: -2;
             .container {
