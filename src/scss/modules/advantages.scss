@@ -1,0 +1,115 @@
+.advantages {
+
+    &__header {
+        display: flex;
+        gap: rem(15);
+        &:not(:last-child) {
+            margin: 0 0 rem(25);
+        }
+    }
+
+    &__title {
+        font-size: inherit;
+        font-weight: 400;
+        line-height: inherit;
+        flex: 0 0 25%;
+        opacity: 0.55;
+        text-transform: lowercase;
+    }
+
+    &__desc {
+        font-size: rem(32);
+        @include adaptive-value(font-size, 22, 32, 576, $container-width);
+        font-weight: 500;
+        line-height: calc(35 / 32);
+        max-width: rem(960);
+    }
+
+    &__body {
+        border-top: rem(1) solid rgba(0, 0, 0, 0.08);
+        padding-top: rem(30);
+    }
+
+    .swiper-slide {
+        width: rem(401);
+    }
+    @include tablet {
+        &__title {
+            display: none;
+        }
+    }
+    @include phone {
+        &__header {
+            &:not(:last-child) {
+                margin-bottom: rem(25);
+            }
+        }
+        &__desc {
+            font-size: rem(22);
+            line-height: calc(25 / 22);
+        }
+        &__body {
+            padding-top: rem(25);
+        }
+        .swiper {
+            margin: 0 -10px;
+            padding: 0 10px;
+        }
+        .swiper-slide {
+            width: calc(340 / 380 * 100vw);
+            max-width: rem(340);
+        }
+    }
+}
+
+.advantage {
+    aspect-ratio: 1;
+    background-color: #F3F3F3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: rem(25) rem(30);
+    width: 100%;
+    &__title {
+        font-size: rem(24);
+        font-weight: 500;
+        line-height: calc(30 / 24);
+        max-width: rem(150);
+    }
+
+    &__icon {
+        align-self: center;
+    }
+
+    &__desc {
+        opacity: 0.55;
+    }
+    @include phone {
+        padding: rem(20);
+        &__title {
+            font-size: rem(18);
+            line-height: calc(20 / 18);
+        }
+        &__icon {
+            width: calc(115 / 340 * 100%);
+            object {
+                width: 100%;
+            }
+        }
+        &__desc {
+            font-size: rem(14);
+        }
+    }
+}
+
+
+.section {
+    &:not(:first-child) {
+        margin-top: rem(140);
+    }
+    @include phone {
+        &:not(:first-child) {
+            margin-top: rem(70);
+        }
+    }
+}

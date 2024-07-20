@@ -443,6 +443,8 @@ window.onload = function() {
     })
 
     if (window.Swiper) {
+
+        // hero
         let heroThumbSwiper = new Swiper(".hero__thumb-swiper", {
             slidesPerView: "auto",
             spaceBetween: 5,
@@ -470,5 +472,19 @@ window.onload = function() {
 
         heroGallerySwiper.controller.control = heroContentSwiper
         heroContentSwiper.controller.control = heroGallerySwiper
+
+    
+        new Swiper(".advantages__swiper", {
+            slidesPerView: "auto",
+            spaceBetween: 10,
+            // slidesOffsetBefore: 10,
+            // slidesOffsetAfter: 10,
+            wathcOverflow: true,
+            breakpoints: {
+                768: {
+                    spaceBetween: 15
+                }
+            }
+        })
     }
 }

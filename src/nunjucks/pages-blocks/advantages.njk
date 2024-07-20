@@ -1,0 +1,33 @@
+{% macro AdvantageItem(title, index) %}
+    <div class="advantages__advantages-item advantage">
+        <div class="advantage__title">{{ title }}</div>
+        <div class="advantage__icon">
+            <object data="images/advantage-0{{index}}.svg" type="image/svg+xml"></object>
+        </div>
+        <p class="advantage__desc">
+            Жирмунский, однако, настаивал, что синхрония доступна. Анжамбеман семантически отражает хорей.
+        </p>
+    </div>
+{% endmacro %}
+
+
+<section class="advantages section">
+    <div class="container">
+        <div class="advantages__header section__header">
+            <h2 class="advantages__title section__title section__title--small">Преимущества<br>работы с нами</h2>
+            <p class="advantages__desc section__desc">Мы используем передовые технологии и инновационные методы проектирования для создания уникальных и функциональных коммерческих пространств</p>
+        </div>
+        <div class="advantages__body section__body">
+            <div class="advantages__swiper swiper">
+                <div class="swiper-wrapper">
+                    {% set advantages = ["Проекты под ключ", "Гибкость в работе", "Оптимизация пространства", "Качественно и в срок"] %}
+                    {% for advantage in advantages %}
+                        <div class="swiper-slide">
+                            {{ AdvantageItem(advantage, loop.index) }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
