@@ -55,13 +55,13 @@
 }
 
 .hero-info {
-    --padding-x: 82;
+    --padding-x: 5.125rem;
     color: #FFFFFF;
     display: flex;
     flex-direction: column;
     align-items: center;
     // justify-content: center;
-    padding: rem(185) var(--padding-x, 82) rem(160);
+    padding: rem(185) var(--padding-x, rem(82)) rem(160);
     // padding: rem(185) calc(82 / 818 * 100%) rem(160);
     @include adaptive-value(--padding-x, 15, 82, 992, $container-width);
     // &__content-wrapper {

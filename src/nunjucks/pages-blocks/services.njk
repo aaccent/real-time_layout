@@ -1,0 +1,51 @@
+{% macro ServiceItem(title, index) %}
+    <div class="services__service-item service">
+        <div class="service__wrapper">
+            <div class="service__name">{{ title }}</div>
+            <div class="service__info">
+                <div class="service__desc">
+                    {% if index === 1 %}
+                        <p class="service__text">
+                            Таким образом сложившаяся структура организации требуют от нас анализа форм
+                            Таким образом сложившаяся структура организации требуют от нас анализа форм
+                            Таким образом сложившаяся структура организации требуют от нас анализа форм
+                            Таким образом сложившаяся структура организации требуют от нас анализа форм
+                            Таким образом сложившаяся структура организации требуют от нас анализа форм
+                            Таким образом сложившаяся структура организации требуют от нас анализа форм
+                        </p>
+                    {% else %}
+                        <p>Таким образом сложившаяся структура организации требуют от нас анализа форм</p>
+                    {% endif %}
+                    <ul>
+                        <li>от 2 месяцев</li>
+                        <li>Под ключ</li>
+                        <li>от 4000 ₽/м²</li>
+                    </ul>
+                </div>
+                <div class="service__image"></div>
+            </div>
+            <div class="service__arrow">
+                <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+
+<section class="services section">
+    <div class="container">
+        <div class="services__inner-wrapper">
+            <div class="services__header section__header">
+                <h2 class="services__title section__title">Услуги</h2>
+            </div>
+            <div class="section__body">
+                <div class="services__list">
+                    {% set services = ["Рестораны и бары", "Офисы", "Магазины", "Торговые островки", "Конструктивные решения", "Архитектурные решения", "Электрика и освещение", "Водоснабжение и водоотведение", "Вентиляция и кондиционирование", "Слаботочные сети", "Проектирование вывески" ] %}
+                    {% for service in services %}
+                        {{ ServiceItem(service, loop.index) }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

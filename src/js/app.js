@@ -289,6 +289,50 @@ window.onload = function() {
     replaceButton(tabletMediaQuery)
     replaceCity(gapMediaQuery)
 
+
+    // SERVICES
+    document.querySelector(".services__list").addEventListener("click", e => {
+        const currentServiceItem = e.target.closest(".service")
+        const MIN_HEIGHT = 180
+
+        if (!currentServiceItem || currentServiceItem.classList.contains("_animating") || window.innerWidth < 769) {
+            return
+        }
+
+        const descEl = currentServiceItem.querySelector(".service__desc")
+        const imageEl = currentServiceItem.querySelector(".service__image")
+        let maxHeight = null;
+
+        currentServiceItem.classList.add("_animating")
+
+        maxHeight = Math.max(descEl.scrollHeight, MIN_HEIGHT)
+        descEl.style.height = `${maxHeight}px`
+
+        if (currentServiceItem.classList.contains("service--open")) {
+            imageEl.style.opacity = ""
+            
+            imageEl.addEventListener("transitionend", () => {
+                currentServiceItem.classList.remove("service--open")
+                descEl.style.height = ``
+                descEl.addEventListener("transitionend", () => {
+                    currentServiceItem.classList.remove("_animating")
+                }, { once: true })
+            }, { once: true })
+
+        } else {
+            descEl.addEventListener("transitionend", () => {
+                currentServiceItem.classList.add("service--open")
+                descEl.style.height = "auto"
+                imageEl.style.opacity = "1"
+
+                imageEl.addEventListener("transitionend", () => {
+                    currentServiceItem.classList.remove("_animating")
+                }, { once: true })
+            }, { once: true })
+        }
+        // currentServiceItem.classList.toggle("service--open")
+    })
+
     document.querySelectorAll("input[name='phone']").forEach(inputElement => {
         inputElement.addEventListener("keypress", (e) => {
             const length = e.target.value.length;
