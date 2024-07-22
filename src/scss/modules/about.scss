@@ -93,7 +93,7 @@
         position: relative;
         left: rem(-15.5);
         & > * {
-            flex: 1 0 auto;
+            flex: 0 0 calc((100% - rem(15 * 2)) / 3) 
         }
 
     }
