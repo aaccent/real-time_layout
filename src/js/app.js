@@ -530,5 +530,19 @@ window.onload = function() {
                 }
             }
         })
+
+        let projectsThumbSwiper = new Swiper(".projects__thumb-swiper", {
+            slidesPerView: "auto",
+            spaceBetween: 5,
+        })
+        
+        let projectsSwiper = new Swiper(".projects__projects-swiper", {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            wathcOverflow: true,
+            thumbs: {
+                swiper: projectsThumbSwiper,
+            },
+        })
     }
 }

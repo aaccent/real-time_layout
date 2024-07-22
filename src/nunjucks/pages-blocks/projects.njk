@@ -1,0 +1,57 @@
+{% macro Project() %}
+    <div class="projects__project project swiper-slide">
+        <div class="project__image">
+            <div class="project__tags">
+                <div class="project__tag">архитектурные решения</div>
+                <div class="project__tag">офисы</div>
+            </div>
+            <img src="" alt="">
+        </div>
+        <div class="project__name">Оптимизация пространства для офиса ProCreate в торговом центре «Авиапарк»</div>
+        <div class="project__link">
+            <span class="project__link-label">Смотреть проект</span>
+            <object data="/images/svg-icons/link-arrow.svg" type="image/svg+xml"></object>
+        </div>
+    </div>
+{% endmacro %}
+
+<section class="projects section">
+    <div class="container">
+        <div class="projects__content">
+            <div class="projects__info">
+                <h2 class="projects__title">Реализованные проекты</h2>
+                <div class="projects__desc">Наши работы включают торговые центры, офисные комплексы и многофункциональные пространства, которые не только удовлетворяют, но и превосходят ожидания наших клиентов.</div>
+                <div class="projects__buttons">
+                    <a href="#" class="projects__more button button--white">
+                        <span class="button__label">смотреть все</span>
+                        <div class="button__arrow">
+                            <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object>
+                        </div>
+                    </a>
+                    <div class="projects__amount">
+                        <div class="projects__amount-value">120+</div>
+                        <div class="projects__amount-label">проектов</div>
+                    </div>
+                </div>
+            </div>
+            <div class="projects__projects-swiper swiper">
+                <div class="swiper-wrapper">
+                    {% for i in range(1,7) %}
+                        {{ Project() }}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="projects__thumb-swiper swiper">
+                <div class="swiper-wrapper">
+                    {% for i in range(1,7) %}
+                        <div class="swiper-slide">
+                            <img src="" alt="">
+                            {# <div class="projects__thumb-image">
+                            </div> #}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
