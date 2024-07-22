@@ -1,0 +1,44 @@
+{% macro Number(number) %}
+    <div class="about__numbers-number number">
+        <div class="number__value">{{ number.value }}</div>
+        <div class="number__label">{{ number.label }}</div>
+    </div>
+{% endmacro %}
+
+
+<section class="about section">
+    <div class="container">
+        <div class="about__desc">
+            <div class="about__desc-content">
+                <h2 class="about__desc-title">О компании</h2>
+                <div class="about__desc-text">
+                    <p>За годы работы мы накопили бесценный опыт, который позволяет нам с уверенностью браться за самые амбициозные и технически сложные проекты. Наша компания гордится тем, что каждый новый проект.</p>
+                    <p>С первого дня нашей работы мы ставим перед собой задачу не только следовать трендам в проектировании, но и опережать их. Благодаря этому подходу, наша компания.</p>
+                </div>
+                <a href="#" class="about__desc-link button button--black">
+                    <span class="button__label">Узнать подробнее</span>
+                    <div class="button__arrow">
+                        <object data="images/svg-icons/button-arrow.svg" type="image/svg+xml"></object>
+                    </div>
+                </a>
+            </div>
+            <div class="about__desc-image">
+                <img src="" alt="">
+            </div>
+        </div>
+        <div class="about__numbers">
+            <div class="about__numbers-title">о компании в цифрах</div>
+            <div class="about__numbers-numbers">
+                {% set numbers = [
+                    { value: 10, label: "лет опыта" }, 
+                    { value: 25, label: "сотрудников" },
+                    { value: 80, label: "клиентов" }
+                ] %}
+
+                {% for number in numbers %}
+                    {{ Number(number) }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
