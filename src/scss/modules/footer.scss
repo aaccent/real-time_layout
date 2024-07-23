@@ -293,7 +293,10 @@
             font-size: rem(18);
             line-height: calc(20 / 18);
         }
-        &__social-link {
+        &__contact-socials {
+            flex-wrap: wrap;
+        }
+        &__contact-social-link {
             width: rem(55);
             height: rem(55);
         }

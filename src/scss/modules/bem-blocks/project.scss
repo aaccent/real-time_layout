@@ -1,0 +1,97 @@
+.project {
+    background-color: var(--white);
+    color: var(--black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: rem(15) rem(15) rem(40);
+    &__image {
+        background-color: #DEDEDE;
+        position: relative;
+        height: rem(440);
+        width: 100%;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        &:not(:last-child) {
+            margin: 0 0 rem(40);
+        }
+    }
+
+    &__tags {
+        display: flex;
+        gap: rem(5);
+        position: absolute;
+        top: rem(15);
+        right: rem(15);
+    }
+
+    &__tag {
+        background-color: var(--white);
+        border-radius: rem(60);
+        padding: rem(12) rem(18);
+        &::before {
+            content: "#";
+            color: var(--red)
+        }
+    }
+
+    &__name {
+        font-size: rem(24);
+        font-weight: 500;
+        line-height: calc(30 / 24);
+        width: calc(100% - rem(40));
+        max-width: rem(560);
+        &:not(:last-child) {
+            margin: 0 0 rem(25);
+        }
+    }
+
+    &__link {
+        display: flex;
+        align-items: baseline;
+        gap: rem(8);
+        font-weight: 600;
+        text-transform: lowercase;
+        object {
+            width: rem(8);
+            height: rem(8);
+        }
+    }
+
+    &__link-label {
+    }
+    @include desktop {
+
+    }
+    @include tablet {
+        &__image {
+            height: rem(360);
+        }
+    }
+    @include phone {
+        padding: rem(10) rem(10) rem(20);
+        &__image {
+            &:not(:last-child) {
+                margin-bottom: rem(20);
+            }
+        }
+        &__tags {
+            display: none;
+        }
+        &__name {
+            font-size: rem(18);
+            line-height: calc(20 / 18);
+            width: calc(100% - rem(20));
+            &:not(:last-child) {
+                margin-bottom: rem(15);
+            }
+        }
+        &__image {
+            aspect-ratio: calc(300 / 180);
+            height: auto;
+        }
+    }
+}

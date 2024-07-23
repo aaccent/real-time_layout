@@ -259,6 +259,11 @@
         }
         &__tags {
             display: none;
+            top: rem(10);
+            height: rem(10);
+        }
+        &__tag {
+            padding: rem(7) rem(15);
         }
         &__name {
             font-size: rem(18);

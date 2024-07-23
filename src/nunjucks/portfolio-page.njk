@@ -1,0 +1,102 @@
+{% extends "templates/layout.njk" %}
+
+{% set title = "Портфолио" %}
+{% block styles %}
+    <link rel="stylesheet" href="css/libs/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/portfolio-page.min.css">
+
+{% endblock %}
+
+{% macro Project() %}
+    <div class="projects__project project">
+        <div class="project__image">
+            <div class="project__tags">
+                <div class="project__tag">архитектурные решения</div>
+                <div class="project__tag">офисы</div>
+            </div>
+            <img src="" alt="">
+        </div>
+        <div class="project__name">Оптимизация пространства для офиса ProCreate в торговом центре «Авиапарк»</div>
+        <div class="project__link">
+            <span class="project__link-label">Смотреть проект</span>
+            <object data="/images/svg-icons/link-arrow.svg" type="image/svg+xml"></object>
+        </div>
+    </div>
+{% endmacro %}
+
+{% block content %}
+
+    <div class="container">
+        <section class="hero">
+            <nav class="hero__breadcrumbs breadcrumbs">
+                <ol class="breadcrumbs__list">
+                    <li class="breadcrumbs__item">
+                        <a href="./" class="breadcrumbs__link">Главная</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="#" class="breadcrumbs__link">Портфолио</a>
+                    </li>
+                </ol>
+            </nav>
+            <h1 class="hero__title">
+                <span class="hero__title-text">Портфолио</span>
+                <div class="hero__title-badge">12</div>
+            </h1>
+            <div class="hero__dropdowns">
+                <div class="hero__dropdown dropdown">
+                    <div class="dropdown__header">
+                        <div class="dropdown__title">Тип помещения</div>
+                        <div class="dropdown__arrow">
+                            <object data="/images/svg-icons/dropdown-arrow.svg" type="image/svg+xml"></object>
+                        </div>
+                    </div>
+                    <div class="dropdown__body">
+                        <div class="dropdown__close"></div>
+                        <ul class="dropdown__list">
+                            {% set items = ["Все", "Вариант 1", "Вариант 2"] %}
+                            {% for item in items %}
+                                <li class="dropdown__list-item {{ 'dropdown__list-item--active' if loop.index == 1 }}">{{ item }}</li>
+                            {% endfor %}
+                        </ul> 
+                    </div>
+                </div>
+                <div class="hero__dropdown dropdown">
+                    <div class="dropdown__header">
+                        <div class="dropdown__title">Тип проекта</div>
+                        <div class="dropdown__arrow">
+                            <object data="/images/svg-icons/dropdown-arrow.svg" type="image/svg+xml"></object>
+                        </div>
+                    </div>
+                    <div class="dropdown__body">
+                        <div class="dropdown__close"></div>
+                        <div class="dropdown__list">
+                            {% set items = ["Все", "дизайн-проект", "архитектурные решения"] %}
+                            {% for item in items %}
+                                <div class="dropdown__list-item {{ 'dropdown__list-item--active' if loop.index == 1 }}">{{ item }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="projects">
+            <div class="projects__grid">
+                {% for i in range(1, 7) %}
+                    {{ Project() }}
+                {% endfor %}
+            </div>
+            <button class="projects__more" type="button">
+                <span>показть ещё</span>
+                <div></div>
+            </button>
+        </section>
+    </div>
+
+    {% include "pages-blocks/advantages.njk" %}
+    {% include "pages-blocks/feedback.njk" %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="js/libs/swiper-bundle.min.js"></script>
+    {{ super() }}
+{% endblock %}

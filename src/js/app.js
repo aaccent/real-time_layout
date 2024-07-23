@@ -292,47 +292,49 @@ window.onload = function() {
 
 
     // SERVICES
-    document.querySelector(".services__list").addEventListener("click", e => {
-        const currentServiceItem = e.target.closest(".service")
-        const MIN_HEIGHT = 180
-
-        if (!currentServiceItem || currentServiceItem.classList.contains("_animating") || window.innerWidth < 769) {
-            return
-        }
-
-        const descEl = currentServiceItem.querySelector(".service__desc")
-        const imageEl = currentServiceItem.querySelector(".service__image")
-        let maxHeight = null;
-
-        currentServiceItem.classList.add("_animating")
-
-        maxHeight = Math.max(descEl.scrollHeight, MIN_HEIGHT)
-        descEl.style.height = `${maxHeight}px`
-
-        if (currentServiceItem.classList.contains("service--open")) {
-            imageEl.style.opacity = ""
-            
-            imageEl.addEventListener("transitionend", () => {
-                currentServiceItem.classList.remove("service--open")
-                descEl.style.height = ``
-                descEl.addEventListener("transitionend", () => {
-                    currentServiceItem.classList.remove("_animating")
-                }, { once: true })
-            }, { once: true })
-
-        } else {
-            descEl.addEventListener("transitionend", () => {
-                currentServiceItem.classList.add("service--open")
-                descEl.style.height = "auto"
-                imageEl.style.opacity = "1"
-
+    if (document.querySelector(".services__list")) {
+        document.querySelector(".services__list").addEventListener("click", e => {
+            const currentServiceItem = e.target.closest(".service")
+            const MIN_HEIGHT = 180
+    
+            if (!currentServiceItem || currentServiceItem.classList.contains("_animating") || window.innerWidth < 769) {
+                return
+            }
+    
+            const descEl = currentServiceItem.querySelector(".service__desc")
+            const imageEl = currentServiceItem.querySelector(".service__image")
+            let maxHeight = null;
+    
+            currentServiceItem.classList.add("_animating")
+    
+            maxHeight = Math.max(descEl.scrollHeight, MIN_HEIGHT)
+            descEl.style.height = `${maxHeight}px`
+    
+            if (currentServiceItem.classList.contains("service--open")) {
+                imageEl.style.opacity = ""
+                
                 imageEl.addEventListener("transitionend", () => {
-                    currentServiceItem.classList.remove("_animating")
+                    currentServiceItem.classList.remove("service--open")
+                    descEl.style.height = ``
+                    descEl.addEventListener("transitionend", () => {
+                        currentServiceItem.classList.remove("_animating")
+                    }, { once: true })
                 }, { once: true })
-            }, { once: true })
-        }
-        // currentServiceItem.classList.toggle("service--open")
-    })
+    
+            } else {
+                descEl.addEventListener("transitionend", () => {
+                    currentServiceItem.classList.add("service--open")
+                    descEl.style.height = "auto"
+                    imageEl.style.opacity = "1"
+    
+                    imageEl.addEventListener("transitionend", () => {
+                        currentServiceItem.classList.remove("_animating")
+                    }, { once: true })
+                }, { once: true })
+            }
+            // currentServiceItem.classList.toggle("service--open")
+        })
+    }
 
     document.querySelectorAll("input[name='phone']").forEach(inputElement => {
         inputElement.addEventListener("keypress", (e) => {
@@ -409,6 +411,40 @@ window.onload = function() {
             e.currentTarget.classList.toggle("footer__services--open")
         }
     })
+
+    // DROPDOWN
+    const dropdownEls = document.querySelectorAll(".dropdown")
+
+    Array.from(dropdownEls).forEach(dropdownEl => {
+        dropdownEl.addEventListener("click", e => {
+            const targetEl = e.target;
+            console.log(targetEl)
+            if (targetEl.closest(".dropdown__header")) {
+                dropdownEl.classList.toggle("dropdown--open")
+                if (phoneMediaQuery.matches) {
+                    lockBody()
+                }
+            }
+        
+            if (targetEl.closest(".dropdown__list-item")) {
+                const currentItemEl = targetEl.closest(".dropdown__list-item");
+        
+                dropdownEl.querySelector(".dropdown__list-item--active").classList.remove("dropdown__list-item--active")
+                currentItemEl.classList.add("dropdown__list-item--active")
+        
+                const dropdownHeaderEl = dropdownEl.querySelector(".dropdown__header")
+                dropdownHeaderEl.querySelector(".dropdown__title").innerHTML = currentItemEl.innerHTML
+                dropdownEl.classList.remove("dropdown--open")
+            } 
+            
+            if (targetEl.closest(".dropdown__close")) {
+                dropdownEl.classList.remove("dropdown--open")
+                unlockBody()
+            }
+            
+        })
+    })
+
 
     // FORMs
     const inputEls = document.querySelectorAll(".form__input")
@@ -547,6 +583,8 @@ window.onload = function() {
             closePopup()
         }
     })
+
+
 
     // article text
     if (document.querySelector(".article")) {

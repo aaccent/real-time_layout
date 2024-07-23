@@ -1,0 +1,251 @@
+@import "base/_vars.scss";
+@import "base/_functions.scss";
+@import "base/_fonts.scss";
+@import "base/_icons.scss";
+@import "base/_reset.scss";
+@import "mixins/breakpoints.scss";
+@import "mixins/media.scss";
+@import "base.scss";
+
+
+//ui
+@import "ui/button.scss";
+@import "ui/article.scss";
+@import "ui/popup.scss";
+@import "ui/breadcrumbs.scss";
+@import "ui/dropdown.scss";
+
+//bem-blocks
+@import "modules/bem-blocks/project.scss";
+
+@import "modules/header.scss";
+
+.hero {
+    background-color: var(--background-color);
+    color: var(--black);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: rem(40) rem(80);
+    padding: rem(25) rem(30);
+    position: relative;
+    height: rem(380);
+    &__breadcrumbs {
+        position: absolute;
+        top: rem(25);
+        left: rem(30);
+        .breadcrumbs__link {
+            opacity: 0.55;
+        }
+    }
+    &__title {
+        position: relative;
+    }
+
+    &__title-text {
+        position: relative;
+        font-size: rem(82);
+        @include adaptive-value(font-size, 40, 82, 576, $container-width);
+        font-weight: 400;
+        line-height: calc(82 / 80);
+    }
+    &__title-badge {
+        background-color: var(--white);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--red);
+        font-size: rem(13);
+        font-weight: 500;
+        position: absolute;
+        top: rem(-19);
+        right: rem(-40);
+        width: rem(45);
+        height: rem(45)
+    }
+    &__dropdowns {
+        display: flex;
+        flex-basis: rem(546);
+        gap: rem(10)
+    }
+    &__dropdown {
+        flex: 0 0 calc(50% - rem(5));
+        max-width: rem(268);
+    }
+    @include tablet {
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: start;
+        &__dropdowns {
+            flex-basis: auto;
+            align-self: stretch;
+        }
+        &__dropdown {
+            
+        }
+        
+    }
+    @include gap {
+        // &__dropdowns {
+        //     flex-direction: column;
+        // }
+        &__dropdown {
+            max-width: rem(420)
+        }
+    }
+    @include phone {
+        row-gap: rem(30);
+        padding: rem(18) rem(20);
+        height: rem(330);
+        &__title {
+            
+        }
+        &__title-badge {
+            font-size: rem(12);
+            width: rem(35);
+            height: rem(35);
+        }
+        &__dropdowns {
+            flex-direction: column
+        }
+        &__dropdown {
+            max-width: none
+        }
+
+    }
+}
+
+.projects {
+    border-bottom: rem(1) solid rgba(0, 0, 0, 0.08);
+    margin: rem(30) 0 0;
+    &__grid {
+        border-top: rem(1) solid rgba(0, 0, 0, 0.08);
+        border-bottom: rem(1) solid rgba(0, 0, 0, 0.08);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: rem(60);
+        padding: rem(30) 0;
+    }
+    &__project {
+        border-left: rem(1) solid rgba(0, 0, 0, 0.08);
+        align-items: flex-start;
+        padding: 0 rem(30);
+        position: relative;
+        &:nth-child(even) {
+            border-right: rem(1) solid rgba(0, 0, 0, 0.08);
+        }
+        &:not(:last-child):not(:nth-last-child(2))::after {
+            background-color: rgba($color: #000000, $alpha: 0.08);
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: rem(-29.5);
+            width: 100%;
+            height: rem(1);
+        }
+        .project__image {
+            aspect-ratio: calc(765 / 440);
+            height: auto;
+        }
+    }
+    &__more {
+        display: flex;
+        align-items: center;
+        gap: rem(8);
+        margin: rem(30) auto;
+        width: fit-content;
+        span {
+            font-weight: 600;
+            text-transform: lowercase;
+        }
+        div {
+            position: relative;
+            width: rem(8);
+            height: rem(8);
+            &::before, &::after {
+                background-color: var(--red);
+                content: "";
+                position: absolute;
+                top: calc(50% - rem(1));
+                left: 0;
+                width: 100%;
+                height: rem(2);
+            }
+            &::after {
+                transform: rotate(-90deg);
+            }
+        }
+    }
+    @include min_tablet {
+        &__project {
+            padding: 0 rem(30);
+        }
+    }
+    @include tablet {
+        &__grid {
+            row-gap: rem(40);
+        }
+        &__project {
+            padding-left: rem(15);
+            padding-right: rem(15);
+            .project__image {
+                aspect-ratio: 1.25;
+                &:not(:last-child) {
+                    margin-bottom: rem(30);
+                }
+            }
+            &:not(:last-child):not(:nth-last-child(2))::after {
+                bottom: rem(-19.5);
+            }
+        }
+    }
+
+    @include gap {
+        &__grid {
+            grid-template-columns: 1fr;
+        }
+        &__project {
+            padding-bottom: rem(40);
+            &:nth-child(odd) {
+                border-right: rem(1) solid rgba(0, 0, 0, 0.08);
+            }
+            .project__image {
+                max-height: rem(360);
+            }
+        }
+    }
+    // @include min_phone {
+    //     &__project {
+    //         padding-left: rem(15);
+    //         padding-right: rem(15);
+    //     }
+    // }
+    @include phone {
+        &__grid {
+            grid-template-columns: 1fr;
+            row-gap: rem(20);
+        }
+        &__project {
+            padding-bottom: rem(20);
+            .project__tags {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                max-width: 100%
+            }
+            &:not(:last-child):not(:nth-last-child(2))::after {
+                bottom: rem(-9.5);
+            }
+        }
+        &__more {
+            margin-top: rem(20);
+            margin-bottom: rem(20);
+        }
+    }
+}
+
+@import "modules/advantages.scss";
+@import "modules/contact-us.scss";
+
+@import "modules/footer.scss";

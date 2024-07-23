@@ -140,9 +140,7 @@
             max-width: unset;
         }
         &__close {
-            padding: rem(4);
-            top: rem(6);
-            right: rem(6);
+            padding: rem(5);
             width: rem(20);
             height: rem(20);
             &::before, &::after {
