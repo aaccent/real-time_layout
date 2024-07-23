@@ -17,6 +17,60 @@
 
     {% include "../pages-blocks/footer.njk" %}
     
+    <div class="popup popup--consultation">
+        <div class="popup__container">
+            <div class="popup__content">
+                <button class="popup__close" type="button"></button>
+                <div class="popup__header">
+                    <div class="popup__title">Получите бесплатную консультацию специалиста</div>
+                    <div class="popup__subtitle _transparent">Получите бесплатную консультацию специалиста</div>
+                </div>
+                <div class="popup__body">
+                    <form action="#" method="POST" class="form">
+                        <div class="form__field">
+                            <label for=""></label>
+                            <input type="text" class="form__input" placeholder="Ваше имя">
+                        </div>
+                        <div class="form__field">
+                            <label for=""></label>
+                            <input type="text" class="form__input" placeholder="+7 (999)-999-99-99">
+                        </div>
+                        <button class="form__submit button button--black">
+                            <span class="button__label">Получить консультацию</span>
+                            <div class="button__arrow">
+                                <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object>
+                            </div>
+                        </button>
+                        <div class="form__agreement">Нажимая кнопку «Получить расчет», вы соглашаетесь с <a href="#">политикой конфиденциальности</a></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup popup--cities">
+        <div class="popup__container">
+            <div class="popup__content">
+                <button class="popup__close" type="button"></button>
+                <div class="popup__header">
+                    <div class="popup__title">Выбор города</div>
+                </div>
+                <div class="popup__body">
+                    <ul class="cities__list">
+                        {% set cities = ["Москва", "Краснознаменск", "Люберцы", "Дзержинсикий", "Жуковский", "Мытищи", "Лыткарино", "Домодедово"] %}    
+                        {% for city in cities %}
+                            <li class="cities__list-item city">
+                                <div class="city__icon">
+                                    <object data="images/svg-icons/location.svg" type="image/svg+xml"></object>
+                                </div>
+                                <div class="city__name">{{ city }}</div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {% block scripts %}
         <script src="js/app.min.js"></script>
     {% endblock %}

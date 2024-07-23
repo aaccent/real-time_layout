@@ -270,7 +270,8 @@ window.onload = function() {
         if (e.matches) {
             mobileMenuEl.querySelector(".header__actions").append(buttonEl)
         } else {
-            headerEl.querySelector(".header__actions").append(buttonEl)
+            console.log(headerEl.querySelector(".header__actions"))
+            headerEl.querySelector(".header__container .header__actions").append(buttonEl)
         }
     }
 
