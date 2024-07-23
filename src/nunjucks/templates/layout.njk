@@ -55,10 +55,10 @@
                     <div class="popup__title">Выбор города</div>
                 </div>
                 <div class="popup__body">
-                    <ul class="cities__list">
+                    <ul class="cities">
                         {% set cities = ["Москва", "Краснознаменск", "Люберцы", "Дзержинсикий", "Жуковский", "Мытищи", "Лыткарино", "Домодедово"] %}    
                         {% for city in cities %}
-                            <li class="cities__list-item city">
+                            <li class="cities__list-item city {{ 'city--active' if loop.index == 1 }}">
                                 <div class="city__icon">
                                     <object data="images/svg-icons/location.svg" type="image/svg+xml"></object>
                                 </div>

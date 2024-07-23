@@ -270,8 +270,7 @@ window.onload = function() {
         if (e.matches) {
             mobileMenuEl.querySelector(".header__actions").append(buttonEl)
         } else {
-            console.log(headerEl.querySelector(".header__actions"))
-            headerEl.querySelector(".header__container .header__actions").append(buttonEl)
+            headerEl.querySelector(".header__container > .header__actions").append(buttonEl)
         }
     }
 
@@ -493,6 +492,43 @@ window.onload = function() {
 
 
     // POPUPs
+    const consultationButtonEls = document.querySelectorAll(".header__call, .footer__call")
+    const citiesButtonEl = document.querySelectorAll(".header__city, .footer__city")
+
+    const consultationPopupEl = document.querySelector(".popup--consultation");
+    const citiesPopupEl = document.querySelector(".popup--cities")
+
+    const citiesListEl = citiesPopupEl.querySelector(".cities")
+
+    Array.from(consultationButtonEls).forEach(buttonEl => {
+        buttonEl.addEventListener("click", e => {
+            openPopup(consultationPopupEl)
+        })
+    })
+
+    Array.from(citiesButtonEl).forEach(buttonEl => {
+        buttonEl.addEventListener("click", e => {
+            openPopup(citiesPopupEl)
+        })
+    })
+
+    citiesListEl.addEventListener("click", (e) => {
+        if (!e.target.closest(".city")) {
+            return
+        }
+
+        let currentCity = e.target.closest(".city")
+
+        citiesListEl.querySelector(".city--active").classList.remove("city--active");
+        currentCity.classList.add("city--active");
+
+        closePopup(citiesPopupEl)
+
+        Array.from(citiesButtonEl).forEach(buttonEl => {
+            buttonEl.querySelector("div:last-child").innerHTML = currentCity.querySelector("div:last-child").innerHTML
+        })
+    })
+
     document.querySelectorAll(".popup__close").forEach(closeEl => {
         let popupEl = closeEl.closest(".popup")
         closeEl.addEventListener("click", () => closePopup(popupEl))
