@@ -7,12 +7,13 @@
                 border-left: rem(1) solid rgba(0, 0, 0, 0.08);
                 display: flex;
                 flex-direction: column;
+                justify-content: space-between;
                 align-items: flex-start;
                 gap: rem(40);
                 padding-left: rem(15);
-                max-height: rem(330);
+                // max-height: rem(330);
                 & > div {
-                    max-width: rem(192);
+                    // max-width: rem(192);
                     opacity: 0.55;
                 }
             }
@@ -21,7 +22,6 @@
 
     &__image {
         aspect-ratio: 1;
-        align-self: flex-start;
         flex-shrink: 0;
         width: rem(330);
         img {
@@ -38,11 +38,13 @@
         display: flex;
         flex-direction: column;
         gap: rem(5);
+        align-items: flex-start;
     }
     &__link {
         background-color: #F3F3F3;
         border-radius: rem(60);;
         padding: rem(12) rem(18);
+        text-transform: lowercase;
         white-space: nowrap;
     }
 
@@ -111,6 +113,7 @@
     &__body {
         display: flex;
         gap: rem(40) rem(15);
+        flex-wrap: wrap;
         & > * {
             flex: 0 0 calc(50% - rem(7.5));
         }
@@ -120,6 +123,9 @@
     }
 
     &__field {
+        &--wide {
+            flex: 0 0 100% !important;
+        }
     }
 
     &__label {
@@ -136,6 +142,9 @@
         padding: 0 0 rem(15);
         opacity: 0.55;
         width: 100%;
+        &--textarea {
+            height: rem(105);
+        }
     }
 
     &__footer {
@@ -188,6 +197,9 @@
             font-size: rem(16);
             line-height: calc(20 / 16);
             padding-bottom: rem(15);
+            &--textarea {
+                height: rem(80);
+            }
         }
         &__agreement {
             font-size: rem(12);

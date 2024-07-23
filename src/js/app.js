@@ -149,6 +149,7 @@ window.onload = function() {
     // breakpoints
     const tabletMediaQuery = window.matchMedia("(max-width: 992px)")
     const gapMediaQuery = window.matchMedia("(max-width: 768px)")
+    const phoneMediaQuery = window.matchMedia("(max-width: 576px)")
     // const callback = function(entries, observer) {
     //     // элемент в видимой части экрана
     //     // в данном случае это headerEl
@@ -385,6 +386,30 @@ window.onload = function() {
         })
     })
 
+    // FOOTER
+    const footerContentEl = document.querySelector(".footer__content")
+    const footerBlockEl = document.querySelector(".footer__main > div:last-child");
+    const footerServicesEl = document.querySelector(".footer__services")
+
+    function replaceFooterBlock(e) {
+        
+        if (e.matches) {
+            footerContentEl.append(footerBlockEl)
+        } else {
+            document.querySelector(".footer__main").append(footerBlockEl)
+        }
+    }
+
+
+    phoneMediaQuery.addEventListener("change", replaceFooterBlock)
+    replaceFooterBlock(phoneMediaQuery)
+
+    footerServicesEl.addEventListener("click", e => {
+        if (phoneMediaQuery.matches && e.target.closest(".footer__services-header")) {
+            e.currentTarget.classList.toggle("footer__services--open")
+        }
+    })
+
     // FORMs
     const inputEls = document.querySelectorAll(".form__input")
     const phoneInputEls = document.querySelectorAll(".form__input[name='phone']")
@@ -486,54 +511,54 @@ window.onload = function() {
         }
     })
 
-        // article text
-        if (document.querySelector(".article")) {
-            const articleEl = document.querySelector(".article");
-            const articleTextEl = articleEl.querySelector(".article__text");
-            const readMoreButtonEl = articleEl.querySelector(".article__more");
-            const maxHeight = parseFloat(getComputedStyle(articleTextEl).maxHeight)
-        
-            function changeElemHeight(elem) {
-                const buttonTextEl = elem.querySelector("span")
-                const className = elem.classList[1];
-                if (elem.classList.contains(className + "--open")) {
-                    elem.classList.remove(className + "--open")
-                    buttonTextEl.innerHTML = "Читать полностью"
-                } else {
-                    elem.classList.add(className + "--open")
-                    buttonTextEl.innerHTML = "Свернуть текст"
-                }
-            }
-        
-            function checkElemHeight(elem) {
-                const className = elem.classList[1];
-                const textEl = articleTextEl;
-                const readMoreEl = readMoreButtonEl;
-        
-                if (textEl.offsetHeight < textEl.scrollHeight) {
-                    !elem.classList.contains(className + "--hide") && elem.classList.add(className + "--hide")
-                } else {
-                    if (!elem.classList.contains(className + "--open")) {
-                        // elem.className = className
-                        elem.classList.remove(`${className}--hide`);
-                    } else if (textEl.offsetHeight <= maxHeight) {
-                        // elem.className = className
-                        elem.classList.remove(`${className}--hide`);
-                        elem.classList.remove(`${className}--open`);
-                        readMoreEl.querySelector("span").innerHTML = "Читать полностью"
-                    }
-                } 
-            }
+    // article text
+    if (document.querySelector(".article")) {
+        const articleEl = document.querySelector(".article");
+        const articleTextEl = articleEl.querySelector(".article__text");
+        const readMoreButtonEl = articleEl.querySelector(".article__more");
+        const maxHeight = parseFloat(getComputedStyle(articleTextEl).maxHeight)
     
-        
-            checkElemHeight(articleEl);
-        
-            readMoreButtonEl.addEventListener("click", () => changeElemHeight(articleEl))
-        
-            window.addEventListener("resize", () => {
-                checkElemHeight(articleEl)
-            })
+        function changeElemHeight(elem) {
+            const buttonTextEl = elem.querySelector("span")
+            const className = elem.classList[1];
+            if (elem.classList.contains(className + "--open")) {
+                elem.classList.remove(className + "--open")
+                buttonTextEl.innerHTML = "Читать полностью"
+            } else {
+                elem.classList.add(className + "--open")
+                buttonTextEl.innerHTML = "Свернуть текст"
+            }
         }
+    
+        function checkElemHeight(elem) {
+            const className = elem.classList[1];
+            const textEl = articleTextEl;
+            const readMoreEl = readMoreButtonEl;
+    
+            if (textEl.offsetHeight < textEl.scrollHeight) {
+                !elem.classList.contains(className + "--hide") && elem.classList.add(className + "--hide")
+            } else {
+                if (!elem.classList.contains(className + "--open")) {
+                    // elem.className = className
+                    elem.classList.remove(`${className}--hide`);
+                } else if (textEl.offsetHeight <= maxHeight) {
+                    // elem.className = className
+                    elem.classList.remove(`${className}--hide`);
+                    elem.classList.remove(`${className}--open`);
+                    readMoreEl.querySelector("span").innerHTML = "Читать полностью"
+                }
+            } 
+        }
+
+    
+        checkElemHeight(articleEl);
+    
+        readMoreButtonEl.addEventListener("click", () => changeElemHeight(articleEl))
+    
+        window.addEventListener("resize", () => {
+            checkElemHeight(articleEl)
+        })
+    }
 
     if (window.Swiper) {
 
