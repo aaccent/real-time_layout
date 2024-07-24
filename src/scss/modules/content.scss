@@ -98,6 +98,41 @@
         ul, ol {
             margin: rem(20) 0;
         }
+        a {
+            display: block;
+            margin: rem(60) 0 0;
+            & > div {
+                aspect-ratio: calc(1035 / 520);
+                position: relative;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                div {
+                    background-color: var(--white);
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: rem(65);
+                    height: rem(65);
+                    object {
+                        transform: translate(rem(3), 0);
+                    }
+                }
+                &:not(:last-child) {
+                    margin: 0 0 rem(20);
+                }
+            }
+            p {
+                opacity: 0.55;
+            }
+        }
         blockquote {
             border-top: rem(1) solid #DADADB;
             border-bottom: rem(1) solid #DADADB;
@@ -168,8 +203,16 @@
     }
     @include tablet {
         padding: rem(40);
-        h1, h2:first-child {
-            font-size: rem(36);
+        &__column {
+            h1, h2:first-child {
+                font-size: rem(36);
+            }
+            a {
+                & > div {
+                    aspect-ratio: 1.6;
+                    max-width: rem(480);
+                }
+            }
         }
         &__aside {
             display: none;
@@ -230,9 +273,17 @@
                     }
                 }
             }
-            picture {
-                aspect-ratio: 1;
-                margin-top: rem(25);
+            a {
+                & > div {
+                    aspect-ratio: calc(320 / 220);
+                    div {
+                        width: rem(50);
+                        height: rem(50);
+                    }
+                }
+                & > p {
+                    display: none;
+                }
             }
             blockquote {
                 margin-top: rem(25);
