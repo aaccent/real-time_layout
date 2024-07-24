@@ -4,9 +4,14 @@
     --red: #C00000;
     --grey: #EEEEEE;
     --background-color: #F3F3F3;
+    --backdrop-bg: #111113;
     --header-z-index: 10;
     --dropdown-z-index: 12;
     --popup-z-index: 15;
+    --container-padding: 0.9375rem;
+    @include phone {
+        --container-padding: 0.625rem;
+    }
     // --init-width: 1920;
     // --init-width_units: calc(var(--init-width) * 1px);
     // @media screen and (min-width: 1920px) {
@@ -55,14 +60,100 @@ body {
 
 .container {
     margin: 0 auto;
-    padding: 0 rem(15);
+    padding: 0 var(--container-padding, 0.9375rem);
     width: 100%;
     max-width: #{$container-width}px;
-    @include phone {
-        padding: 0 rem(10)
-    }
+    // @include phone {
+    //     padding: 0 rem(10)
+    // }
 }
 
 ._transparent {
     opacity: 0.55;
+}
+
+.swiper-controls {
+    background-color: #333337;
+    border-radius: rem(35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: rem(20) 0;
+    position: relative;
+
+    padding: rem(6);
+    .swiper-button-prev, .swiper-button-next {
+        padding: rem(7) rem(27);
+        position: static;
+        margin: 0;
+        width: auto;
+        height: auto;
+
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        width: rem(53);
+        height: rem(53);
+        transition: background-color 0.15s ease 0s;
+        &::after {
+            content: none;
+        }
+        object {
+            pointer-events: none;
+            height: rem(11);
+            user-select: none;
+        }
+        @include ishover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+    &::after {
+        background-color: rgba(255, 255, 255, 0.1);
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: rem(1);
+        height: rem(25);
+    }
+    @include ishover {
+        &::after {
+            opacity: 0;
+        }
+    }
+}
+
+.swiper-button-next {
+    object {
+        transform: translate(rem(3), 0);
+    }
+}
+.swiper-button-prev {
+    object {
+        transform: translate(rem(-3), 0) rotate(-180deg);
+    }
+}
+
+.fancybox {
+    &__backdrop {
+        background-color: var(--backdrop-bg);
+        opacity: 0.7;
+    }
+    &__toolbar.is-absolute {
+        top: rem(20);
+        right: rem(20);
+        .f-button[data-fancybox-close] {
+            background-color: transparent;
+            @include ishover {
+                background-color: transparent;
+            }
+        }
+    }
+    &__content {
+        aspect-ratio: calc(1040 / 670);
+        max-width: rem(1040);
+    }
 }

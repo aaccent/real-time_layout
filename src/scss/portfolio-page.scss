@@ -18,6 +18,7 @@
 //bem-blocks
 @import "modules/bem-blocks/project.scss";
 
+
 @import "modules/header.scss";
 
 .hero {
@@ -34,6 +35,11 @@
         position: absolute;
         top: rem(25);
         left: rem(30);
+        .breadcrumbs__item {
+            &::before {
+                background-color: #C4C4C4;
+            }
+        }
         .breadcrumbs__link {
             opacity: 0.55;
         }
@@ -98,6 +104,10 @@
         row-gap: rem(30);
         padding: rem(18) rem(20);
         height: rem(330);
+        &__breadcrumbs {
+            top: rem(18);
+            left: rem(20);
+        }
         &__title {
             
         }

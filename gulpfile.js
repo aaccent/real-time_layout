@@ -40,6 +40,7 @@ const toProd = () => () => global.app.isDev = false
 
 const copy_videos = () => copy("/videos/*", "/videos/")
 const copy_json = () => copy("/json/*", "/json/")
+const copy_libs = gulp.parallel(js_libs, css_libs)
 const fonts = gulp.series(convertFonts, insertFonts)
 
 const mainTasks = gulp.parallel(njk, images, css_libs, scss, js_libs, js, fonts, json)
@@ -56,4 +57,5 @@ gulp.task('build', build)
 gulp.task('clear', reset)
 gulp.task("images", images)
 gulp.task("svg-sprite", svgSprites)
+gulp.task("libs", copy_libs)
 gulp.task("zipping", zipping)

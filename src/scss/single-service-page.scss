@@ -12,6 +12,8 @@
 @import "ui/button.scss";
 @import "ui/article.scss";
 @import "ui/popup.scss";
+@import "ui/breadcrumbs.scss";
+
 
 @import "modules/header.scss";
 
@@ -23,6 +25,13 @@
     height: calc(var(--vh, 1vh) * 100);
     min-height: rem(550);
     max-height: rem(820);
+    overflow: hidden;
+    &__breadcrumbs {
+        position: absolute;
+        top: rem(25);
+        left: rem(60);
+        z-index: 1;
+    }
     &__image {
         background-color: #DEDEDE;
         position: absolute;
@@ -40,7 +49,7 @@
         padding: rem(55) rem(82) rem(60) rem(60);
         position: relative;
         max-width: rem(810);
-        z-index: 1;
+        z-index: 2;
     }
 
     &__title {
@@ -82,6 +91,9 @@
         }
     }
     @include tablet {
+        &__breadcrumbs {
+            left: rem(40);
+        }
         &__content {
             padding: rem(40)
         }
@@ -109,6 +121,10 @@
     }
     @include phone {
         max-height: rem(690);
+        &__breadcrumbs {
+            top: rem(15);
+            left: rem(20);
+        }
         &__content {
             padding: rem(20)
         }

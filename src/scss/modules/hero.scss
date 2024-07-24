@@ -238,34 +238,3 @@
         }
     }
 }
-
-.swiper-controls {
-    background-color: #333337;
-    border-radius: rem(35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: rem(20) 0;
-    position: relative;
-    .swiper-button-prev, .swiper-button-next {
-        padding: rem(7) rem(27);
-        position: static;
-        margin: 0;
-        width: auto;
-        height: auto;
-        &::after {
-            content: none;
-        }
-        object {
-            pointer-events: none;
-            height: rem(11);
-            user-select: none;
-        }
-    }
-}
-
-.swiper-button-prev {
-    object {
-        transform: rotate(-180deg);
-    }
-}

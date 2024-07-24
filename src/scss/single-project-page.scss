@@ -1,0 +1,56 @@
+@import "base/_vars.scss";
+@import "base/_functions.scss";
+@import "base/_fonts.scss";
+@import "base/_icons.scss";
+@import "base/_reset.scss";
+@import "mixins/breakpoints.scss";
+@import "mixins/media.scss";
+@import "base.scss";
+
+
+//ui
+@import "ui/button.scss";
+@import "ui/article.scss";
+@import "ui/popup.scss";
+@import "ui/breadcrumbs.scss";
+
+@import "modules/header.scss";
+
+
+@import "modules/content.scss";
+.content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    row-gap: rem(95);
+    padding-top: rem(25);
+    &__breadcrumbs {
+        color: var(--black);
+        grid-column: 1 / 3;
+        .breadcrumbs__item {
+            &::before {
+                background-color: #C4C4C4;
+            }
+        }
+        .breadcrumbs__link {
+            
+            opacity: 0.55;
+        }
+    }
+    &__column {
+        max-width: rem(1035)
+    }
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(75)
+    }
+    @include phone {
+        row-gap: rem(50);
+        padding-top: rem(15);
+    }
+}
+@import "modules/gallery.scss";
+@import "modules/advantages.scss";
+@import "modules/contact-us.scss";
+
+@import "modules/footer.scss";

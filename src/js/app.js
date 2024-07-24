@@ -693,5 +693,41 @@ window.onload = function() {
                 swiper: projectsThumbSwiper,
             },
         })
+
+        new Swiper(".gallery__swiper", {
+            slidesPerView: 3,
+            slidesPerView: "auto",
+            spaceBetween: 10,
+            breakpoints: {
+                577: {
+                    spaceBetween: 15
+                },
+                // 1280: {
+                //     slidesPerView: 3
+                // },
+            },
+            navigation: {
+                nextEl: ".gallery__swiper .swiper-button-next",
+                prevEl: ".gallery__swiper .swiper-button-prev",
+            },
+        })
+    }
+
+    if (window.Fancybox) {
+        Fancybox.bind('[data-fancybox="gallery"]', {
+            // Custom options for the first gallery
+            Thumbs: false,
+            Images: {
+                zoom: false
+            },
+            Toolbar: {
+                display: {
+                    left: [],
+                    middle: [],
+                    right: ["close"]
+                }
+            }
+            // Hash: false
+          });
     }
 }
