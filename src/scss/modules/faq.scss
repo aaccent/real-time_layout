@@ -31,6 +31,9 @@
             flex-direction: column;
             padding: rem(40);
         }
+        &__questions {
+            flex-basis: auto;
+        }
     }
     @include phone {
         &__content {
