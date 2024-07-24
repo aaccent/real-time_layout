@@ -238,6 +238,9 @@
         }
     }
     @include phone {
+        &__content {
+            padding: rem(20);
+        }
         &__logo {
             &:not(:last-child) {
                 margin-bottom: rem(25);

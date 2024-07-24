@@ -1,0 +1,134 @@
+.section {
+}
+
+.faq {
+    &__content {
+        background-color: var(--background-color);
+        padding: rem(55) rem(60) rem(60);
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: rem(60) rem(40);
+    }
+
+    &__title {
+        font-size: inherit;
+        font-weight: 400;
+        line-height: inherit;
+        text-transform: lowercase;
+    }
+    
+    &__questions {
+        flex-basis: rem(1175);
+    }
+    &__question {
+        &:not(:last-child) {
+            margin: 0 0 rem(30);
+        }
+    }
+    @include tablet {
+        &__content {
+            flex-direction: column;
+            padding: rem(40);
+        }
+    }
+    @include phone {
+        &__content {
+            row-gap: rem(40);
+            padding: rem(20);
+        }
+        &__question {
+            &:not(:last-child) {
+                margin: 0 0 rem(20);
+            }
+        }
+    }
+}
+
+
+.question {
+
+    &__header {
+        border-top: rem(1) solid #DADADB;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: rem(30);
+        padding: rem(30) 0 0;
+    }
+
+    &__title {
+        font-size: rem(24);
+        font-weight: 500;
+        line-height: calc(30 / 24);
+    }
+
+    &__button {
+        position: relative;
+        width: rem(18);
+        height: rem(18);
+        &::before, &::after {
+            background-color: var(--red);
+            content: "";
+            position: absolute;
+            top: calc(50% - rem(1));
+            left: 0;
+            width: 100%;
+            height: rem(2);
+            transition: opacity 0.1s ease 0s, transform 0.2s ease 0s;
+        }
+        &::after {
+            transform: rotate(-90deg);
+        }
+    }
+
+    &__body {
+        height: 0;
+        overflow: hidden;
+        transition: height 0.4s ease 0s;
+    }
+
+    &__text {
+        padding: rem(35) 0 0;
+        p + p {
+            margin: rem(20) 0 0;
+        }
+    }
+
+    &.accordion--open {
+        .question__button {
+            &::before {
+                opacity: 0;
+                transform: rotate(90deg);
+            }
+            &::after {
+                transform: rotate(0);
+            }
+        }
+    }
+    @include phone {
+        &__header {
+            padding-top: rem(20);
+        }
+        &__title {
+            font-size: rem(18);
+            line-height: calc(20 / 18);
+        }
+        &__button {
+            position: relative;
+            width: rem(14);
+            height: rem(14);
+            &::before, &::after {
+                top: calc(50% - rem(0.5));
+                height: rem(1);
+            }
+        }
+        &__text {
+            padding: rem(18) 0 0;
+            p + p {
+                margin: rem(10) 0 0;
+            }
+        }
+    }
+}
+
