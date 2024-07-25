@@ -821,7 +821,7 @@ window.onload = function() {
             let videoId = youtubeParser(videoSrc)
 
             videoEl.querySelector("img").setAttribute("src", `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`)
-            videoEl.querySelector("source").setAttribute("srcset", `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`)
+            // videoEl.querySelector("source").setAttribute("srcset", `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`)
         })
     }
     if (window.mapboxgl) {
