@@ -40,17 +40,40 @@
         }
     }
     &__logo {
-
+        object {
+            &:last-child {
+                display: none;
+            }
+        }
+        @include ishover {
+            object {
+                &:first-child {
+                    display: none;
+                }
+                &:last-child {
+                    display: initial;
+                }
+            }
+        }
     }
     &__city {
         display: flex;
         align-items: center;
         gap: rem(8);
-        color: #858585
+        color: #858585;
+        cursor: pointer;
+        transition: color 0.2s ease 0s;
+        @include ishover {
+            color: var(--black);
+            .header__city-icon {
+                color: var(--red)
+            }
+        }
     }
     &__city-icon {
-        display: flex;
-        align-items: center;
+        width: rem(12);
+        height: rem(12);
+        transition: color 0.2s ease 0s;
     }
     &__city-label {
     }
@@ -68,6 +91,13 @@
                 align-items: center;
                 gap: 8px;
                 padding: 18px 25px 21px ;
+                &._open {
+                    background-color: var(--black);
+                    color: var(--white);
+                    .header__menu-arrow {
+                        transform: rotate(180deg);
+                    }
+                }
                 @include ishover {
                     background-color: var(--black);
                     color: var(--white);
@@ -203,6 +233,7 @@
             }
             .header__menu-arrow {
                 width: rem(18);
+                height: rem(12);
                 transition: transform 0.2s ease 0s;
             }
             .header__menu-link, .submenu__link {
@@ -237,12 +268,22 @@
     }
 
     &__menu-arrow {
-        color: inherit
+        width: rem(9);
+        height: rem(6);
     }
     &__actions {
         display: flex;
         align-items: center;
         gap: rem(45);
+    }
+    &__phone, &__mail {
+        transition: color 0.2s ease 0s;
+        @include ishover {
+            color: var(--red);
+        }
+    }
+    &__call {
+
     }
     &__burger {
         box-sizing: content-box;
@@ -338,6 +379,32 @@
         display: flex;
         gap: rem(5);
     }
+    &__social-item {
+        &:first-child {
+            svg {
+                width: rem(21);
+                height: rem(13)
+            }
+        }
+        &:nth-child(2) {
+            svg {
+                width: rem(21);
+                height: rem(21)
+            }
+        }
+        &:nth-child(3) {
+            svg {
+                width: rem(19);
+                height: rem(16)
+            }
+        }
+        &:nth-child(4) {
+            svg {
+                width: rem(21);
+                height: rem(15)
+            }
+        }
+    }
     &__social-link {
         background-color: rgba($color: #28282C, $alpha: 0.05);
         border-radius: 50%;
@@ -345,7 +412,12 @@
         justify-content: center;
         align-items: center;
         width: rem(65);
-        height: rem(60);
+        height: rem(65);
+        transition: backgorund-color 0.2s ease 0s, color 0.2s ease 0s;
+        @include ishover {
+            background-color: var(--black);
+            color: var(--white);
+        }
     }
 
 

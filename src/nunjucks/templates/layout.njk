@@ -60,7 +60,10 @@
                         {% for city in cities %}
                             <li class="cities__list-item city {{ 'city--active' if loop.index == 1 }}">
                                 <div class="city__icon">
-                                    <object data="images/svg-icons/location.svg" type="image/svg+xml"></object>
+                                    {# <object data="images/svg-icons/location.svg" type="image/svg+xml"></object> #}
+                                    <svg>
+                                        <use xlink:href="#location"></use>
+                                    </svg>
                                 </div>
                                 <div class="city__name">{{ city }}</div>
                             </li>
@@ -70,7 +73,7 @@
             </div>
         </div>
     </div>
-
+    {% include "../pages-blocks/svg-sprites.njk" %}
     {% block scripts %}
         <script src="js/app.min.js"></script>
     {% endblock %}

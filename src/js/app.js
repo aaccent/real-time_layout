@@ -217,6 +217,8 @@ window.onload = function() {
         } else if (!e.target.closest(".header__submenu")) {
             if (desktopSubmenuEl.classList.contains("header__submenu--open")) {
                 desktopSubmenuEl.className = "header__submenu header__submenu--close";
+                e.currentTarget.classList.remove("_open")
+
                 desktopSubmenuEl.firstElementChild.addEventListener("transitionend", () => {
                     unlockBody()
                     desktopSubmenuEl.classList.remove("header__submenu--close")
@@ -224,6 +226,7 @@ window.onload = function() {
             } else if (!desktopSubmenuEl.classList.contains("header__submenu--close")) {
                 lockBody()
                 desktopSubmenuEl.classList.add("header__submenu--open")
+                e.currentTarget.classList.add("_open")
             }
         }
     })

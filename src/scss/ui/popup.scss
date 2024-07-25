@@ -119,6 +119,29 @@
                 font-weight: 400;
                 line-height: calc(25 / 18);
             }
+            &__icon {
+                svg {
+                    color: #CBCBCB;
+                    transition: color 0.2s ease 0s;
+                    width: rem(13);
+                    height: rem(16);
+                }
+            }
+            &--active {
+                pointer-events: none;
+                .city__icon {
+                    svg {
+                        color: var(--red);
+                    }
+                }
+            }
+            @include ishover {
+                .city__icon {
+                    svg {
+                        color: var(--red);
+                    }
+                }
+            }
         }
     }
     @include gap {

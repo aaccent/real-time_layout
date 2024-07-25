@@ -40,3 +40,7 @@ textarea {
 img, svg, object {
     vertical-align: top;
 }
+
+object {
+    pointer-events: none;
+}

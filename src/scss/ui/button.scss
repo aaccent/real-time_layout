@@ -20,6 +20,12 @@
         transform: translate(0, -50%);
         width: rem(31);
         height: rem(31);
+        svg {
+            width: rem(11);
+            height: rem(11);
+            transform: translate(1px, 0);
+            transition: transform 0.2s ease 0s;
+        }
     }
     &--black {
         background-color: var(--black);
@@ -35,6 +41,13 @@
         .button__arrow {
             background-color: var(--black);
             color: var(--white);    
+        }
+    }
+    @include ishover {
+        .button__arrow {
+            svg {
+                transform: rotate(-45deg);
+            }
         }
     }
     @include phone {
