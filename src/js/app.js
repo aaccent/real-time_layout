@@ -804,6 +804,25 @@ window.onload = function() {
             }
             // Hash: false
           });
+        
+        Fancybox.bind("[data-fancybox]", {
+            // Your custom options
+        });
+
+        function youtubeParser(url){
+            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+            var match = url.match(regExp);
+            return (match&&match[7].length==11)? match[7] : false;
+        }
+        let fancyboxYoutubeVideoEls = document.querySelectorAll("[data-fancybox-youtube]")
+
+        Array.from(fancyboxYoutubeVideoEls).forEach(videoEl => {
+            let videoSrc = videoEl.getAttribute("href")
+            let videoId = youtubeParser(videoSrc)
+
+            videoEl.querySelector("img").setAttribute("src", `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`)
+            videoEl.querySelector("source").setAttribute("srcset", `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`)
+        })
     }
     if (window.mapboxgl) {
         console.log("!!!!!")
