@@ -75,6 +75,11 @@
     </div>
     {% include "../pages-blocks/svg-sprites.njk" %}
     {% block scripts %}
+        <script>
+            var desktopMenuEl = document.querySelector(".header__menu--desktop");
+            document.documentElement.style.setProperty('--header-width', `${desktopMenuEl.offsetWidth}px`);
+            document.documentElement.style.setProperty('--header-height', `${desktopMenuEl.offsetHeight}px`);
+        </script>
         <script src="js/app.min.js"></script>
     {% endblock %}
 </body>

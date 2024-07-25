@@ -30,7 +30,9 @@
                                         {% for i in range(0, 2) %}
                                             <div class="submenu__menu-col">
                                                 {% for item in submenu_column %}
-                                                    <li class="submenu__menu-item">{{ item }}</li>
+                                                    <li class="submenu__menu-item">
+                                                        <a href="/subservice-page.html" class="submenu__menu-link">{{ item }}</a>
+                                                    </li>
                                                 {% endfor %}
                                             </div>
                                         {% endfor %}
@@ -39,25 +41,6 @@
                                         <img src="/images/submenu.png" alt="">
                                     </div>
                                 </div>
-                                {# <div class="submenu__services">
-                                    <div class="submenu__services-cols">
-                                        <ul class="submenu__services-list">
-                                            {% for service in item.services.firstColumn %}
-                                                <li class="submenu__service-item">
-                                                    <a href="#" class="submenu__service-link">{{ service }}</a>
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                        <ul class="submenu__services-list">
-                                            {% for service in item.services.secondColumn %}
-                                                <li class="submenu__service-item">
-                                                    <a href="#" class="submenu__service-link">{{ service }}</a>
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    
-                                    </div>
-                                </div> #}
                             </li>
                             {% endfor %}
                         </ul>
@@ -77,8 +60,8 @@
             <ul class="header__menu-list menu__list">
                 {% for item in menu_items %}
                     <li class="header__menu-item menu__item">
-                        <a href="{{ item.href }}" class="header__menu-link menu__link">{{ item.label }}</a>
                         {% if loop.index == 1 %}
+                            <span class="header__menu-link menu__link">{{ item.label }}</span>
                             <svg class="header__menu-arrow">
                                 <use xlink:href="#menu-arrow"></use>
                             </svg>
@@ -91,13 +74,16 @@
                                             {% if loop.index == 1 %}
                                                 <div class="submenu__menu">
                                                     <button class="submenu__back-button" type="button">
-                                                        <object data="/images/svg-icons/menu-arrow.svg" type="image/svg+xml"></object>
+                                                        {# <object data="/images/svg-icons/menu-arrow.svg" type="image/svg+xml"></object> #}
+                                                        <svg>
+                                                            <use xlink:href="#menu-arrow"></use>
+                                                        </svg>
                                                         <span>{{ item.category }}</span>
                                                     </button>
                                                     <ul class="submenu__menu-list">
                                                         {% for item in submenu_column %}
                                                             <li class="submenu__menu-item">
-                                                                <a href="#" class="submenu__menu-link">{{ item }}</a>
+                                                                <a href="/subservice-page.html" class="submenu__menu-link">{{ item }}</a>
                                                             </li>
                                                         {% endfor %}
                                                     </ul>
@@ -107,37 +93,8 @@
                                     {% endfor %}
                                 </ul>
                             </div>
-                            {# <div class="menu__submenu submenu menu">
-                                <button class="menu__back-button">
-                                    <object data="/images/navigation-arrow.svg" type="image/svg+xml"></object>
-                                    <span>{{ item.category }}</span>
-                                </button>
-                                <ul class="menu__list">
-                                    {% for item in submenu_items %}
-                                        <li class="menu__item">
-                                            <a href="#" class="menu__link">{{item.category}}</a>
-                                            <button class="menu__arrow" type="button">
-                                                <object data="/images/menu-arrow.svg" type="image/svg+xml"></object>
-                                            </button>
-                                            <div class="menu__submenu submenu menu">
-                                                <div class="container">
-                                                    <button class="menu__back-button">
-                                                        <object data="/images/navigation-arrow.svg" type="image/svg+xml"></object>
-                                                        <span>{{ item.category }}</span>
-                                                    </button>
-                                                    <ul class="menu__list">
-                                                        {% for item in submenu__column %}
-                                                            <li class="menu__item">
-                                                                <a href="#" class="menu__link">{{ item }}</a>
-                                                            </li>
-                                                        {% endfor %}
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div> #}
+                        {% else %}
+                            <a href="{{ item.href }}" class="header__menu-link menu__link">{{ item.label }}</a>
                         {% endif %}
                     </li>
                 {% endfor %}
@@ -236,9 +193,9 @@
         </div>
         {% set menu_items = [
             {label: "Услуги", href: "#"},
-            {label: "Портфолио", href: "#"},
-            {label: "О компании", href: "#"},
-            {label: "Контакты", href: "#"}
+            {label: "Портфолио", href: "/portfolio-page.html"},
+            {label: "О компании", href: "/about-page.html"},
+            {label: "Контакты", href: "/contacts-page.html"}
         ] %}
         {{ Menu(menu_items )}}
         {{ MobileMenu(menu_items) }}

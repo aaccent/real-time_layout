@@ -87,6 +87,7 @@
             }
             .header__menu-item {
                 border-radius: rem(35);
+                cursor: pointer;
                 display: flex;
                 align-items: center;
                 gap: 8px;
@@ -136,7 +137,7 @@
             left: 0;
             bottom: 0;
             width: 100%;
-            height: calc(100% - rem(75));
+            height: calc(100% - rem(95));
             transform: translate(0, -120%);
             transition: transform 0.3s ease 0s;
             z-index: -2;
@@ -424,9 +425,13 @@
     @media screen and (min-width: 1441px) {
         &__menu {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: calc(50% - 0.5 * var(--header-height));
+            left: calc(50% - 0.5 * var(--header-width));
+            // transform: translate(-50%, -50%);
+
+                // transform: translate(-50%, -50%);
+                // top: 50%;
+                // left: 50%;
         }
     }
     @include desktop {
@@ -452,6 +457,13 @@
         }
         &__burger {
             display: block;
+        }
+    }
+    @include tablet {
+        &__menu {
+            &--mobile {
+                height: calc(100% - rem(75));
+            }
         }
     }
     @include gap {
@@ -671,6 +683,17 @@
         }
     }
 
+    &__back-button {
+        display: flex;
+        align-items: center;
+        gap: rem(16);
+        svg {
+            width: rem(16);
+            height: rem(8);
+            transform: rotate(90deg);
+        }
+    }
+
     &__image {
         background-color: #D9D9D9;
         width: rem(400);
@@ -680,20 +703,14 @@
             object-fit: cover;
         }
     }
-
-    &__services {
-    }
-
-    &__services-cols {
-    }
-
-    &__services-list {
-    }
-
-    &__service-item {
-    }
-
-    &__service-link {
+    @include phone {
+        &__back-button {
+            gap: rem(10);
+            svg {
+                // width: rem(8);
+                // height: rem(4)
+            };
+        }
     }
 }
 
