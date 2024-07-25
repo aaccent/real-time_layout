@@ -2,9 +2,9 @@
     <div class="container">
         <div class="contact-us__content">
             <div class="contact-us__image">
-                <img src="" alt="">
+                <img src="/images/feedback.png" alt="">
             </div>
-            <form class="contact-us__form form">
+            <form action="#" method="POST" class="contact-us__form form" name="call-back">
                 <div class="form__header">
                     <div class="form__title">Остались вопросы? Оставьте заявку!</div>
                     <div class="form__desc">Опишите свой вопрос в форме ниже, вам перезвонит специалист для консультации</div>
@@ -12,11 +12,11 @@
                 <div class="form__body">
                     <div class="form__field">
                         <label for="name" class="form__label">Ваше имя</label>
-                        <input type="text" class="form__input" name="name" id="name" placeholder="Ваше имя">
+                        <input type="text" class="form__input form__input--required" name="name" id="name" placeholder="Ваше имя">
                     </div>
                     <div class="form__field">
                         <label for="phone" class="form__label">+7 (999)-999-99-99</label>
-                        <input type="text" class="form__input" name="name" id="phone" placeholder="+7 (999)-999-99-99">
+                        <input type="tel" name="phone" class="form__input form__input--required" placeholder="+7 (999)-999-99-99" autocomplete="off">
                     </div>
                     <div class="form__field form__field--wide">
                         <label for="comment" class="form__label">Сообщение</label>
@@ -27,14 +27,17 @@
                     <button class="form__submit button button--black" type="submit">
                         <span class="button__label">Получить консультацию</span>
                         <div class="button__arrow">
-                            <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object>
+                            {# <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object> #}
+                            <svg>
+                                <use xlink:href="#arrow"></use>
+                            </svg>
                         </div>
                     </button>
                     <div class="form__agreement">Нажимая кнопку «Получить консультацию, вы соглашаетесь с <a href="#">политикой конфиденциальности</a></div>
                 </div>
             </form>
             <div>
-                <div>Подберем оптимальное<br>решение для вашей задачи</div>
+                <div class="_transparent">Подберем оптимальное<br>решение для вашей задачи</div>
                 <div class="contact-us__links">
                     <div class="contact-us__link">Бесплатная консультация</div>
                     <div class="contact-us__link">Перезвоним в течение 30 минут</div>

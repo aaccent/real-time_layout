@@ -1,5 +1,7 @@
 .footer {
 
+    margin: rem(170) 0 0;
+    @include adaptive-value(margin-top, 70, 140, 576, $container-width);
     &__container {
     }
 
@@ -30,6 +32,24 @@
         }
     }
 
+    &__logo {
+        object {
+            &:last-child {
+                display: none;
+            }
+        }
+        @include ishover {
+            object {
+                &:first-child {
+                    display: none;
+                }
+                &:last-child {
+                    display: initial;
+                }
+            }
+        }
+    }
+
     &__actions {
         display: flex;
         flex-direction: column;
@@ -44,16 +64,27 @@
         align-items: center;
         gap: rem(8);
         padding: rem(5) rem(15) rem(5) rem(5);
+        @include ishover {
+            .footer__action-icon {
+                color: var(--red)
+            }
+        }
     }
     
     &__action-icon {
         background-color: var(--white);
         border-radius: 50%;
+        color: #858585;
         display: flex;
         justify-content: center;
         align-items: center;
         width: rem(30);
         height: rem(30);
+        transition: color 0.2s ease 0s;
+        svg {
+            width: rem(13);
+            height: rem(13);
+        }
     }
 
     &__action-label {
@@ -61,6 +92,7 @@
     }
 
     &__city {
+        
     }
 
     &__city-icon {
@@ -165,6 +197,10 @@
         font-weight: 500;
         line-height: calc(25 / 24);
         letter-spacing: -0.03em;
+        transition: opacity 0.2s ease 0s;
+        @include ishover {
+            opacity: 0.55;
+        }
     }
 
     &__contact-address, &__contact-operation-mode {
@@ -188,16 +224,45 @@
     }
 
     &__contact-social {
+        color: var(--white);
+        &:first-child {
+            svg {
+                width: rem(21);
+                height: rem(13)
+            }
+        }
+        &:nth-child(2) {
+            svg {
+                width: rem(21);
+                height: rem(21)
+            }
+        }
+        &:nth-child(3) {
+            svg {
+                width: rem(19);
+                height: rem(16)
+            }
+        }
+        &:nth-child(4) {
+            svg {
+                width: rem(21);
+                height: rem(15)
+            }
+        }
     }
 
     &__contact-social-link {
-        background-color: rgba(0, 0, 0, 0.04);
+        background-color: rgba(255, 255, 255, 0.04);
         border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
         width: rem(65);
         height: rem(65);
+        transition: background-color 0.2s ease 0s;
+        @include ishover {
+            background-color: rgba(255, 255, 255, 0.14);
+        }
     }
     @include desktop {
         &__content {

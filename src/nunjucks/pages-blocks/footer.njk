@@ -5,19 +5,26 @@
         <div class="footer__content">
             <div class="footer__main">
                 <div>
-                    <a href="#" class="footer__logo">
-                        <object data="/images/logo.svg" type="image/svg+xml"></object>
+                    <a href="/" class="footer__logo">
+                        <object data="/images/logo-dark.svg" type="image/svg+xml"></object>
+                        <object data="/images/logo-dark-hover.svg" type="image/svg+xml"></object>
                     </a>
                     <div class="footer__actions">
                         <button class="footer__city footer__action" type="button">
                             <div class="footer__city-icon footer__action-icon">
-                                <object data="/images/svg-icons/geo.svg" type="image/svg+xml"></object>
+                                {# <object data="/images/svg-icons/geo.svg" type="image/svg+xml"></object> #}
+                                <svg>
+                                    <use xlink:href="#geo"></use>
+                                </svg>
                             </div>
                             <div class="footer__city-label footer__action-label">Москва</div>
                         </button>
                         <button class="footer__call footer__action" type="button">
                             <div class="footer__action-icon">
-                                <object data="/images/svg-icons/phone.svg" type="image/svg+xml"></object>
+                                {# <object data="/images/svg-icons/phone.svg" type="image/svg+xml"></object> #}
+                                <svg>
+                                    <use xlink:href="#phone-icon"></use>
+                                </svg>
                             </div>
                             <span class="footer__action-label">Заказать звонок</span>
                         </button>
@@ -28,7 +35,7 @@
                         <object data="/images/aaccent-logo.svg" type="image/svg+xml"></object>
                     </div>
                     <div class="footer__copyright _transparent">© 2000 - 2024 ООО «Реал Тайм»</div>
-                    <div class="footer__policy _transparent">Политика конфидициальности</div>
+                    <a href="#" class="footer__policy _transparent">Политика конфидициальности</a>
                 </div>
             </div>
             <nav class="footer__menu">
@@ -43,7 +50,7 @@
                         <ul class="footer__services-menu _transparent">
                             {% for service in services %}
                                 <li class="footer__serivces-item">
-                                    <a href="#" class="footers__services-link">{{ service }}</a>
+                                    <a href="/single-service-page.html" class="footers__services-link">{{ service }}</a>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -51,13 +58,13 @@
                 </div>
                 <ul class="footer__menu-list">
                     <li class="footer__menu-item">
-                        <a href="#" class="footer__menu-link">Портфолио</a>
+                        <a href="/portfolio-page.html" class="footer__menu-link">Портфолио</a>
                     </li>
                     <li class="footer__menu-item">
-                        <a href="#" class="footer__menu-link">О Компании</a>
+                        <a href="/about-page.html" class="footer__menu-link">О Компании</a>
                     </li>
                     <li class="footer__menu-item">
-                        <a href="#" class="footer__menu-link">Контакты</a>
+                        <a href="/contacts-page.html" class="footer__menu-link">Контакты</a>
                     </li>
                 </ul>
             </nav>
@@ -74,22 +81,34 @@
                 <ul class="footer__contact-socials">
                     <li class="footer__contact-social">
                         <a href="#" class="footer__contact-social-link">
-                            <object data="/images/svg-icons/vk.svg" type="image/svg+xml"></object>
+                            {# <object data="/images/svg-icons/vk.svg" type="image/svg+xml"></object> #}
+                            <svg>
+                                <use xlink:href="#vk"></use>
+                            </svg>
                         </a>
                     </li>
                     <li class="footer__contact-social">
                         <a href="#" class="footer__contact-social-link">
-                            <object data="/images/svg-icons/whatsapp.svg" type="image/svg+xml"></object>
+                            {# <object data="/images/svg-icons/whatsapp.svg" type="image/svg+xml"></object> #}
+                            <svg>
+                                <use xlink:href="#whatsapp"></use>
+                            </svg>
                         </a>
                     </li>
                     <li class="footer__contact-social">
                         <a href="#" class="footer__contact-social-link">
-                            <object data="/images/svg-icons/telegram.svg" type="image/svg+xml"></object>
+                            {# <object data="/images/svg-icons/telegram.svg" type="image/svg+xml"></object> #}
+                            <svg>
+                                <use xlink:href="#telegram"></use>
+                            </svg>
                         </a>
                     </li>
                     <li class="footer__contact-social">
                         <a href="#" class="footer__contact-social-link">
-                            <object data="/images/svg-icons/youtube.svg" type="image/svg+xml"></object>
+                            {# <object data="/images/svg-icons/youtube.svg" type="image/svg+xml"></object> #}
+                             <svg>
+                                <use xlink:href="#youtube"></use>
+                            </svg>
                         </a>
                     </li>
                 </ul>

@@ -79,13 +79,13 @@ function validateForm(form) {
     for (let i = 0; i < reqFiedls.length; i++) {
         if (reqFiedls[i].getAttribute("name") === "name") {
             if (reqFiedls[i].value.trim() === "") {
-                reqFiedls[i].closest(".form__control").classList.add("form__control--error");
+                reqFiedls[i].closest(".form__field").classList.add("form__field--error");
                 errors++;
             }
         }
         if (reqFiedls[i].getAttribute("name") === "phone") {
             if (reqFiedls[i].value.trim() === "" || reqFiedls[i].value.length < 18) {
-                reqFiedls[i].closest(".form__control").classList.add("form__control--error");
+                reqFiedls[i].closest(".form__field").classList.add("form__field--error");
                 errors++;
             }
         }
@@ -93,7 +93,7 @@ function validateForm(form) {
 
         if (reqFiedls[i].getAttribute("name") === "mail") {
             if (reqFiedls[i].value.trim() === "" || (reqFiedls[i].value.trim !== "" && !validateEmail(emailField.value))) {
-                reqFiedls[i].closest(".form__control").classList.add("form__control--error");
+                reqFiedls[i].closest(".form__field").classList.add("form__field--error");
                 errors++;
             }
         }
@@ -385,30 +385,6 @@ window.onload = function() {
         })
     }
 
-    document.querySelectorAll("input[name='phone']").forEach(inputElement => {
-        inputElement.addEventListener("keypress", (e) => {
-            const length = e.target.value.length;
-            if (e.charCode < 48 || e.charCode > 57 || length > 14) {
-                e.preventDefault();
-                return;
-            }
-    
-            switch (length) {
-                case 0: 
-                    e.target.value = "8 " ;
-                    break;
-                case 5:
-                case 9:
-                case 12:
-                    e.target.value += " ";
-                    break;
-                default:
-                    break;
-            }
-        })
-        inputElement.addEventListener("input", e => {e.target.value.length === 2 && (e.target.value = "")})
-    })
-
     const faqItemHeaderEls = document.querySelectorAll(".accordion__header");
     faqItemHeaderEls.forEach(faqItemHeaderEl => {
         let timeoutId;
@@ -499,7 +475,7 @@ window.onload = function() {
     const inputEls = document.querySelectorAll(".form__input")
     const phoneInputEls = document.querySelectorAll(".form__input[name='phone']")
     const nameInputEls = document.querySelectorAll(".form__input[name='name']")
-    const inputControlClass = "form__control"
+    const inputControlClass = "form__field"
 
     Array.from(inputEls).forEach(inputEl => {
         let inputControlEl = inputEl.closest("." + inputControlClass)
@@ -522,11 +498,13 @@ window.onload = function() {
     Array.from(phoneInputEls).forEach(inputEl => {
         inputEl.addEventListener("keypress", (e) => {
             const length = e.target.value.length;
+
             if (e.charCode < 48 || e.charCode > 57 || length > 17) {
                 e.preventDefault();
                 return;
             }
-                switch (length) {
+
+            switch (length) {
                 case 0: 
                     e.target.value = "+7 (" ;
                     break;               
@@ -541,12 +519,11 @@ window.onload = function() {
                     break;
             }
         })
-        inputEl.addEventListener("input", e => {e.target.value.length === 3 && (e.target.value = "")})
+        inputEl.addEventListener("input", e => {e.target.value.length === 4 && (e.target.value = "")})
     })
 
     Array.from(nameInputEls).forEach(inputEl => {
         inputEl.addEventListener("keypress", (e) => {
-            const length = e.target.value.length;
             if (e.charCode >= 48 && e.charCode <= 57) {
                 e.preventDefault();
                 return;
@@ -729,6 +706,7 @@ window.onload = function() {
             }
         })
 
+        // projects
         let projectsThumbSwiper = new Swiper(".projects__thumb-swiper", {
             slidesPerView: "auto",
             spaceBetween: 5,
@@ -738,11 +716,23 @@ window.onload = function() {
             slidesPerView: 1,
             spaceBetween: 10,
             wathcOverflow: true,
+            loop: true,
+            parallax: true,
             thumbs: {
                 swiper: projectsThumbSwiper,
             },
         })
 
+        let projectsBackgroundSwiper = new Swiper(".projects__background-swiper", {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            allowTouchMove: false,
+            effect: "fade",
+            crossFade: true,
+        })
+
+        projectsSwiper.controller.control = projectsBackgroundSwiper;
+        // projectsBackgroundSwiper.controller.control = projectsSwiper;
         // gallery
         new Swiper(".gallery__swiper", {
             slidesPerView: 3,

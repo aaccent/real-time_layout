@@ -55,6 +55,7 @@
         gap: rem(8);
         font-weight: 600;
         text-transform: lowercase;
+        transition: color 0.2s ease 0s;
         object {
             width: rem(8);
             height: rem(8);
@@ -62,6 +63,11 @@
     }
 
     &__link-label {
+    }
+    @include ishover {
+        .project__link {
+            color: var(--red)
+        }
     }
     @include desktop {
 

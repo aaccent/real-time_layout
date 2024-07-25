@@ -265,6 +265,10 @@
         }
     }
     @include phone {
+        &::before {
+            left: rem(-20);
+            width: calc(100% + 2 * rem(20));
+        }
         &__wrapper {
             row-gap: rem(10);
             padding-top: rem(15);

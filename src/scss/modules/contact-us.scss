@@ -14,7 +14,7 @@
                 // max-height: rem(330);
                 & > div {
                     // max-width: rem(192);
-                    opacity: 0.55;
+                    // opacity: 0.55;
                 }
             }
         }
@@ -44,8 +44,12 @@
         background-color: #F3F3F3;
         border-radius: rem(60);;
         padding: rem(12) rem(18);
+        transition: color 0.2s ease 0s;
         text-transform: lowercase;
         white-space: nowrap;
+        @include ishover {
+            color: var(--red)
+        }
     }
 
     @include desktop {
@@ -126,6 +130,11 @@
         &--wide {
             flex: 0 0 100% !important;
         }
+        &--error {
+            .form__input {
+                border-color: var(--red);
+            }
+        }
     }
 
     &__label {
@@ -156,6 +165,10 @@
 
     &__submit {
         flex-shrink: 0;
+        cursor: pointer;
+        .button__arrow {
+            color: var(--red);
+        }
     }
 
     &__agreement {

@@ -65,6 +65,9 @@
     }
 
     &__desc-link {
+        .button__arrow {
+            color: var(--red)
+        }
     }
 
     &__desc-image {

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="contact-us__content">
             <div class="contact-us__image">
-                <img src="" alt="">
+                <img src="/images/calculation.png" alt="">
             </div>
             <form class="contact-us__form form">
                 <div class="form__header">
@@ -11,26 +11,30 @@
                 </div>
                 <div class="form__body">
                     <div class="form__field">
-                        <label for="name" class="form__label">Ваше имя</label>
-                        <input type="text" class="form__input" name="name" id="name" placeholder="Ваше имя">
+                        {# <label for="name" class="form__label">Ваше имя</label> #}
+                        <input type="text" class="form__input form__input--required" name="name" id="name" placeholder="Ваше имя">
                     </div>
                     <div class="form__field">
-                        <label for="phone" class="form__label">+7 (999)-999-99-99</label>
-                        <input type="text" class="form__input" name="name" id="phone" placeholder="+7 (999)-999-99-99">
+                        {# <label for="phone" class="form__label">+7 (999)-999-99-99</label> #}
+                        {# <input type="tel" class="form__input" name="phone" id="phone" placeholder="+7 (999)-999-99-99" autocomplete="off"> #}
+                        <input type="tel" name="phone" class="form__input form__input--required" placeholder="+7 (999)-999-99-99" autocomplete="off">
                     </div>
                 </div>
                 <div class="form__footer">
                     <button class="form__submit button button--black" type="submit">
                         <span class="button__label">Получить расчет</span>
                         <div class="button__arrow">
-                            <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object>
+                            {# <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object> #}
+                            <svg>
+                                <use xlink:href="#arrow"></use>
+                            </svg>
                         </div>
                     </button>
                     <div class="form__agreement">Нажимая кнопку «Получить расчет», вы соглашаетесь с <a href="#">политикой конфиденциальности</a></div>
                 </div>
             </form>
             <div>
-                <div>Cвяжитесь с нами самостоятельно:</div>
+                <div class="_transparent">Cвяжитесь с нами самостоятельно:</div>
                 <div class="contact-us__links">
                     <a href="mailto:info@re-time.ru" class="contact-us__link">info@re-time.ru</a>
                     <a href="tel:+79153400110" class="contact-us__link">8 (915) 340 01 10</a>
