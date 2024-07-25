@@ -42,6 +42,76 @@
         height: 100%;
         object-fit: cover;
     }
+
+    &__popup {
+        display: flex;
+        align-items: center;
+        padding: var(--container-padding);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        visibility: hidden;
+        z-index: var(--popup-z-index);
+        .swiper-wrapper {
+            z-index: 2;
+        }
+        &--open {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    &__popup-backdrop {
+        background-color: var(--backdrop-bg);
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.7;
+        z-index: 1;
+    }
+    &__popup-close {
+        box-sizing: content-box;
+        position: absolute;
+        top: rem(10);
+        right: rem(10);
+        padding: 0.625rem;
+        width: rem(16);
+        height: rem(16);
+        opacity: 0.7;
+        z-index: 1;
+        &::after, &::before {
+            background-color: var(--white);
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: rem(20.64);
+            height: rem(2)
+        }
+        &::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        &::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+        @include ishover {
+            opacity: 1;
+        }
+    }
+    &__popup-swiper {
+        // aspect-ratio: calc(1040 / 765);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: rem(30);
+        max-width: rem(1040);
+    }
+    &__popup-slide {
+
+    }
     @include tablet {
         &__title {
             font-size: rem(36);
@@ -51,14 +121,14 @@
         }
     }
     @include gap {
-        &__controls {
-            display: none;
-        }
         &__swiper {
             margin-left: calc(-1 * var(--container-padding));
             margin-right: calc(-1 * var(--container-padding));
             padding-left: var(--container-padding);
             padding-right: var(--container-padding);
+            .swiper-controls {
+                display: none;
+            }
         }
     }
     @include phone {
@@ -79,6 +149,15 @@
             width: rem(290);
             // width: calc(290 / 380 * 100vw);
             // max-width: rem(380);
+        }
+        &__popup-close {
+            padding: rem(5);
+            width: rem(20);
+            height: rem(20);
+            opacity: 1;
+            &::before, &::after {
+                width: rem(26.29);
+            }
         }
     }
 }

@@ -694,6 +694,7 @@ window.onload = function() {
             },
         })
 
+        // gallery
         new Swiper(".gallery__swiper", {
             slidesPerView: 3,
             slidesPerView: "auto",
@@ -711,6 +712,39 @@ window.onload = function() {
                 prevEl: ".gallery__swiper .swiper-button-prev",
             },
         })
+        let galleryPopupSlider = new Swiper(".gallery__popup-swiper", {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            breakpoints: {
+                577: {
+                    spaceBetween: 15
+                },
+                // 1280: {
+                //     slidesPerView: 3
+                // },
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        })
+
+        if (document.querySelector(".gallery")) {
+            document.querySelector(".gallery").addEventListener("click", e => {
+                if (e.target.closest(".gallery__popup-close") || e.target.closest(".gallery__popup-backdrop")) {
+                    document.querySelector(".gallery__popup").classList.remove("gallery__popup--open")
+                    return
+                }
+
+                if (!e.target.closest(".gallery__slide")) {
+                    return
+                }
+
+                let currentIndex =  parseInt(e.target.closest(".gallery__slide").getAttribute("aria-label"))
+                galleryPopupSlider.slideTo(currentIndex - 1, 0)
+                document.querySelector(".gallery__popup").classList.add("gallery__popup--open")
+            })
+        }
     }
 
     if (window.Fancybox) {

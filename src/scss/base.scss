@@ -153,7 +153,21 @@ body {
         }
     }
     &__content {
-        aspect-ratio: calc(1040 / 670);
-        max-width: rem(1040);
+        img {
+            aspect-ratio: calc(1040 / 670);
+            max-width: rem(1040);
+
+        }
+    }
+    &__nav {
+        position: absolute;
+        top: calc(50% + min(calc(670 / 1040 * 50vw), 335px));
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        & > * {
+            position: static !important;
+            transform: none !important;
+        }
     }
 }
