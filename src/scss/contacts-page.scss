@@ -1,0 +1,100 @@
+@import "base/_vars.scss";
+@import "base/_functions.scss";
+@import "base/_fonts.scss";
+@import "base/_icons.scss";
+@import "base/_reset.scss";
+@import "mixins/breakpoints.scss";
+@import "mixins/media.scss";
+@import "base.scss";
+
+
+//ui
+@import "ui/button.scss";
+@import "ui/article.scss";
+@import "ui/popup.scss";
+@import "ui/breadcrumbs.scss";;
+
+// bem
+@import "modules/bem-blocks/contact-info.scss";
+
+@import "modules/header.scss";
+
+.hero {
+    background-color: var(--background-color);
+    color: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: rem(25) rem(30);
+    position: relative;
+    // height: rem(380);
+    &__breadcrumbs {
+        color: var(--black);
+        .breadcrumbs__item {
+            &::before {
+                background-color: #C4C4C4;
+            }
+        }
+        .breadcrumbs__link {
+            opacity: 0.55;
+        }
+    }
+
+    &__title {
+        position: relative;
+        font-size: rem(82);
+        @include adaptive-value(font-size, 40, 82, 576, $container-width);
+        font-weight: 400;
+        line-height: calc(80 / 82);
+        margin-top: calc(230 / 82 * 1em);
+    }
+
+
+    @include phone {
+        padding: rem(18) rem(20);
+        height: auto;
+        &__title {
+            margin: rem(80) 0 0
+        }
+    }
+}
+
+.map {
+    margin: rem(15) 0 rem(140);
+    @include adaptive-value(margin-bottom, 70, 140, 576, $container-width);
+    height: rem(680);
+    .mapboxgl-control-container {
+        display: none;
+    }
+    &__contact-info {
+        position: absolute;
+        left: rem(30);
+        bottom: rem(30);
+        width: rem(500);
+        height: calc(100% - 2 * rem(30));
+        z-index: 2;
+    }
+    @include tablet {
+        &__contact-info {
+            left: rem(20);
+        }
+    }
+    @include phone {
+        .mapboxgl-marker {
+            img {
+                width: rem(128);
+            }
+        }
+        &__contact-info {
+            left: rem(10);
+            bottom: rem(10) ;
+            width: calc(100% - 2 * rem(10));
+            height: 50%;
+        }
+    }
+}
+@import "modules/contact-us.scss";
+
+
+@import "modules/footer.scss";

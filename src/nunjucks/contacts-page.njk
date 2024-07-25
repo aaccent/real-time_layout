@@ -1,0 +1,67 @@
+{% extends "templates/layout.njk" %}
+
+{% set title = "Контакты" %}
+
+{% block styles %}
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/contacts-page.min.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <section class="hero">
+            <nav class="hero__breadcrumbs breadcrumbs">
+                <ol class="breadcrumbs__list">
+                    <li class="breadcrumbs__item">
+                        <a href="./" class="breadcrumbs__link">Главная</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <a href="#" class="breadcrumbs__link">Контакты</a>
+                    </li>
+                </ol>
+            </nav>
+            <h1 class="hero__title">Контакты</h1>
+        </section>
+        <section class="map section" id="map">
+            <div class="map__contact-info contact-info">
+                <div class="contact-info__title _transparent">Контактная информация:</div>
+                <div class="contact-info__links">
+                    <a href="tel:+79153400110" class="contact-info__link">8 (915) 340 01 10</a>
+                    <a href="mailto:info@re-time.ru" class="contact-info__link">info@re-time.ru</a>
+                </div>
+                <div class="contact-info__info">
+                    <div class="contact-info__address"><span class="_transparent">Адрес: </span>г. Москва, Научный проезд, д. 19</div>
+                    <div class="contact-info__operation-mode"><span class="_transparent">Режим работы: </span>Пн — Пт с 09:00 до 18:00</div>
+                </div>
+                <ul class="contact-info__socials">
+                    <li class="contact-info__social">
+                        <a href="#" class="contact-info__social-link">
+                            <object data="/images/svg-icons/vk.svg" type="image/svg+xml"></object>
+                        </a>
+                    </li>
+                    <li class="contact-info__social">
+                        <a href="#" class="contact-info__social-link">
+                            <object data="/images/svg-icons/whatsapp.svg" type="image/svg+xml"></object>
+                        </a>
+                    </li>
+                    <li class="contact-info__social">
+                        <a href="#" class="contact-info__social-link">
+                            <object data="/images/svg-icons/telegram.svg" type="image/svg+xml"></object>
+                        </a>
+                    </li>
+                    <li class="contact-info__social">
+                        <a href="#" class="contact-info__social-link">
+                            <object data="/images/svg-icons/youtube.svg" type="image/svg+xml"></object>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    {% include "pages-blocks/feedback.njk" %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+    {{ super() }}
+{% endblock %}

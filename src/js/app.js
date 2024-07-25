@@ -118,6 +118,47 @@ function validateForm(form) {
     }
 }
 
+function initMap(mapContainerId) {
+    function setMapPin() {
+        let coords = mapEl?.dataset.mark?.split(',').map(Number) || [37.55419429026398, 55.657224400550575];
+        // создание и установка пинов
+        let marker = document.createElement("div")
+        marker.insertAdjacentHTML("beforeend", `<img src="images/map-pin.svg" alt="">`)
+
+        // добавление пинов на карту
+        new mapboxgl.Marker(marker)
+            .setLngLat(center)
+            .addTo(map);
+    }
+
+    async function getCoords () {
+        setTimeout(() => {
+            setMapPin()
+        }, 2000)
+    }
+    
+    let mapEl = document.getElementById(mapContainerId);
+    let center = mapEl?.dataset.center?.split(',').map(Number) || [37.55419429026398, 55.657224400550575];
+
+    // создание карты
+    mapboxgl.accessToken = "pk.eyJ1Ijoic2V2YS1hYWNjZW50IiwiYSI6ImNsd3lubWViZTFwMDAycXNhbm4yN3p4am0ifQ.puvbO9AAr4Jf8ude29ST7g";
+    const map = new mapboxgl.Map({
+        container: mapContainerId, // container ID
+        style: 'mapbox://styles/mapbox/light-v11',
+        center: center, 
+        zoom: 16, // starting zoom
+        dragRotate: false,
+        cooperativeGestures: true,
+        locale: {
+            "ScrollZoomBlocker.CtrlMessage": "ctrl + scroll для увеличения масштаба карты",
+            "ScrollZoomBlocker.CmdMessage" : "⌘ + scroll для увеличения масштаба карты",
+            'TouchPanBlocker.Message': 'Используйте два пальца чтобы подвинуть карту',
+            'NavigationControl.ZoomIn': 'Увеличить',
+            'NavigationControl.ZoomOut': 'Уменьшить',
+        },
+    });
+    getCoords()
+}
 
 // device detection
 // if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
@@ -763,5 +804,9 @@ window.onload = function() {
             }
             // Hash: false
           });
+    }
+    if (window.mapboxgl) {
+        console.log("!!!!!")
+        initMap("map")
     }
 }
