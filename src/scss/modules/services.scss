@@ -10,7 +10,7 @@
     &__inner-wrapper {
         --padding-x: 3.75rem;
         background-color: #252529;
-        padding: rem(55) var(--padding-x, 3.75rem);
+        padding: rem(55) var(--padding-x, 3.75rem) rem(0);
         // @include adaptive-value(--padding-x, 20, 60, 576, $container-width)
     }
     &__header {
@@ -30,14 +30,14 @@
     &__list {
     }
 
-    &__service-item {
-        &:not(:last-child) {
-            margin: 0 0 rem(50);
-        }
-    }
+    // &__service-item {
+    //     &:not(:last-child) {
+    //         margin: 0 0 rem(50);
+    //     }
+    // }
     @include tablet {
         &__inner-wrapper {
-            padding: rem(36) rem(40);
+            padding: rem(36) rem(40) rem(0);
         }
         &__header {
             &:not(:last-child) {
@@ -47,15 +47,15 @@
         &__title {
             font-size: rem(60);
         }
-        &__service-item {
-            &:not(:last-child) {
-                margin-bottom: rem(40);
-            }
-        }
+        // &__service-item {
+        //     &:not(:last-child) {
+        //         margin-bottom: rem(40);
+        //     }
+        // }
     }
     @include phone {
         &__inner-wrapper {
-            padding: rem(20);
+            padding: rem(20) rem(20) rem(0);
         }
         &__header {
             &:not(:last-child) {
@@ -66,23 +66,38 @@
             font-size: rem(40);
             line-height: calc(45 / 40);
         }
-        &__service-item {
-            &:not(:last-child) {
-                margin-bottom: rem(30);
-            }
-        }
+        // &__service-item {
+        //     &:not(:last-child) {
+        //         margin-bottom: rem(30);
+        //     }
+        // }
     }
 }
 
 
 .service {
     // display: flex;
+    display: block;
+    position: relative;
+    z-index: 1;
+    &::before {
+        background-color: var(--white);
+        content: "";
+        position: absolute;
+        top: 0;
+        left: rem(-60);
+        width: calc(100% + 2 * rem(60));
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.2s ease 0s;
+        z-index: -1;
+    }
     &__wrapper {
         border-top: rem(1) solid rgba(255, 255, 255, 0.1);
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         gap: rem(30) rem(15);
-        padding: rem(25) 0 0;
+        padding: rem(25) 0 rem(50);
     }
     &__name {
         grid-column: span 3;
@@ -160,13 +175,34 @@
         margin-left: rem(32);
         width: rem(31);
         height: rem(31);
+        transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
         object {
             width: rem(9);
         }
+        svg {
+            width: rem(9);
+            height: rem(9);
+        }
     }
     &--open {
+        &::before {
+            opacity: 0.02;
+        }
         .service__image {
             height: auto;
+        }
+        .service__arrow {
+            background-color: var(--white);
+            color: var(--red);
+        }
+    }
+    @include ishover {
+        &::before {
+            opacity: 0.02;
+        }
+        .service__arrow {
+            background-color: var(--white);
+            color: var(--red);
         }
     }
     @include desktop {
@@ -184,9 +220,14 @@
         }
     }
     @include tablet {
+        &::before {
+            left: rem(-40);
+            width: calc(100% + 2 * rem(40));
+        }
         &__wrapper {
             grid-template-columns: 1fr rem(31);
             row-gap: rem(20);
+            padding-bottom: rem(40);
             position: relative;
         }
         &__name {
@@ -227,6 +268,7 @@
         &__wrapper {
             row-gap: rem(10);
             padding-top: rem(15);
+            padding-bottom: rem(30);
         }
         &__name {
             font-size: rem(18);

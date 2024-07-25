@@ -6,7 +6,10 @@
                 <a href="#" class="hero-slide__link button button--white">
                     <span class="button__label">Узнать подробнее</span>
                     <div class="button__arrow">
-                        <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object>
+                        {# <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object> #}
+                        <svg>
+                            <use xlink:href="#arrow"></use>
+                        </svg>
                     </div>
                 </a>
                 <ul class="hero-slide__desc">
@@ -25,10 +28,13 @@
 {% macro DescSlide() %}
     <div class="hero-info">
         <div class="hero-info__title">Проектирование ресторанов, баров и кафе в торговых центрах</div>
-        <a href="#" class="hero-info__button button button--white">
+        <a href="/single-service-page.html" class="hero-info__button button button--white">
             <span class="button__label">Узнать подробнее</span>
             <div class="button__arrow">
-                <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object>
+                {# <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object> #}
+                <svg>
+                    <use xlink:href="#arrow"></use>
+                </svg>
             </div>
         </a>
         <ul class="hero-info__desc">

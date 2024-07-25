@@ -1,5 +1,5 @@
 {% macro ServiceItem(title, index) %}
-    <div class="services__service-item service">
+    <a href="/single-service-page.html" class="services__service-item service">
         <div class="service__wrapper">
             <div class="service__name">{{ title }}</div>
             <div class="service__info">
@@ -25,10 +25,13 @@
                 <div class="service__image"></div>
             </div>
             <div class="service__arrow">
-                <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object>
+                {# <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object> #}
+                <svg>
+                    <use xlink:href="#arrow"></use>
+                </svg>
             </div>
         </div>
-    </div>
+    </a>
 {% endmacro %}
 
 

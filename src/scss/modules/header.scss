@@ -284,7 +284,9 @@
         }
     }
     &__call {
-
+        .button__arrow {
+            color: var(--red)
+        }
     }
     &__burger {
         box-sizing: content-box;

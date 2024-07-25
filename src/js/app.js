@@ -224,6 +224,7 @@ window.onload = function() {
                     desktopSubmenuEl.classList.remove("header__submenu--close")
                 }, { once: true })
             } else if (!desktopSubmenuEl.classList.contains("header__submenu--close")) {
+                window.scrollTo(0,0)
                 lockBody()
                 desktopSubmenuEl.classList.add("header__submenu--open")
                 e.currentTarget.classList.add("_open")
@@ -239,6 +240,7 @@ window.onload = function() {
             })
             mobileMenuEl.classList.remove("header__menu--submenu-open")
         } else {
+            window.scrollTo(0,0)
             lockBody()
         }
         
@@ -341,10 +343,13 @@ window.onload = function() {
             const currentServiceItem = e.target.closest(".service")
             const MIN_HEIGHT = 180
     
-            if (!currentServiceItem || currentServiceItem.classList.contains("_animating") || window.innerWidth < 769) {
+            if (!currentServiceItem || currentServiceItem.classList.contains("_animating") || e.target.closest(".service__arrow") || window.innerWidth < 769) {
                 return
             }
-    
+
+
+            e.preventDefault()
+
             const descEl = currentServiceItem.querySelector(".service__desc")
             const imageEl = currentServiceItem.querySelector(".service__image")
             let maxHeight = null;
