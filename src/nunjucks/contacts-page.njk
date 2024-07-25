@@ -1,6 +1,7 @@
 {% extends "templates/layout.njk" %}
 
 {% set title = "Контакты" %}
+{% set file_input = true %}
 
 {% block styles %}
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
@@ -36,22 +37,34 @@
                 <ul class="contact-info__socials">
                     <li class="contact-info__social">
                         <a href="#" class="contact-info__social-link">
-                            <object data="/images/svg-icons/vk.svg" type="image/svg+xml"></object>
+                            {# <object data="/images/svg-icons/vk.svg" type="image/svg+xml"></object> #}
+                            <svg>
+                                <use xlink:href="#vk"></use>
+                            </svg>
                         </a>
                     </li>
                     <li class="contact-info__social">
                         <a href="#" class="contact-info__social-link">
-                            <object data="/images/svg-icons/whatsapp.svg" type="image/svg+xml"></object>
+                            {# <object data="/images/svg-icons/whatsapp.svg" type="image/svg+xml"></object> #}
+                            <svg>
+                                <use xlink:href="#whatsapp"></use>
+                            </svg>
                         </a>
                     </li>
                     <li class="contact-info__social">
                         <a href="#" class="contact-info__social-link">
-                            <object data="/images/svg-icons/telegram.svg" type="image/svg+xml"></object>
+                            {# <object data="/images/svg-icons/telegram.svg" type="image/svg+xml"></object> #}
+                            <svg>
+                                <use xlink:href="#telegram"></use>
+                            </svg>
                         </a>
                     </li>
                     <li class="contact-info__social">
                         <a href="#" class="contact-info__social-link">
-                            <object data="/images/svg-icons/youtube.svg" type="image/svg+xml"></object>
+                            {# <object data="/images/svg-icons/youtube.svg" type="image/svg+xml"></object> #}
+                            <svg>
+                                <use xlink:href="#youtube"></use>
+                            </svg>
                         </a>
                     </li>
                 </ul>

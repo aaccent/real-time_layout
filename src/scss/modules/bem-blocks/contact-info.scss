@@ -26,6 +26,10 @@
         font-weight: 500;
         line-height: calc(25 / 24);
         letter-spacing: -0.03em;
+        transition: color 0.2s ease 0s;
+        @include ishover {
+            color: var(--red);
+        }
     }
 
     &__address, &__operation-mode {
@@ -49,6 +53,33 @@
     &__social {
     }
     
+    &__social {
+        &:first-child {
+            svg {
+                width: rem(21);
+                height: rem(13)
+            }
+        }
+        &:nth-child(2) {
+            svg {
+                width: rem(21);
+                height: rem(21)
+            }
+        }
+        &:nth-child(3) {
+            svg {
+                width: rem(19);
+                height: rem(16)
+            }
+        }
+        &:nth-child(4) {
+            svg {
+                width: rem(21);
+                height: rem(15)
+            }
+        }
+    }
+
     &__social-link {
         background-color: rgba(0, 0, 0, 0.04);
         border-radius: 50%;
@@ -57,6 +88,11 @@
         align-items: center;
         width: rem(65);
         height: rem(65);
+        transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
+        @include ishover {
+            background-color: var(--black);
+            color: var(--white)
+        }
     }
     @include desktop {
         padding: rem(20);

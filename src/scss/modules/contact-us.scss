@@ -9,7 +9,7 @@
                 flex-direction: column;
                 justify-content: space-between;
                 align-items: flex-start;
-                gap: rem(40);
+                gap: rem(60) rem(40);
                 padding-left: rem(15);
                 // max-height: rem(330);
                 & > div {
@@ -54,14 +54,24 @@
 
     @include desktop {
         &__content {
+            display: grid;
+            grid-template-columns: rem(280) 1fr;
             gap: rem(40);
+            & > div {
+                &:last-child {
+                    grid-column: 1 / 3;
+                }
+            }
         }
         &__image {
-            width: rem(280);
+            // width: rem(280);
+            align-self: stretch;
+            width: 100%;
         }
     }
     @include tablet {
         &__content {
+            display: flex;
             flex-direction: column;
             & > div {
                 &:last-child {
@@ -156,6 +166,97 @@
         }
     }
 
+    &__file {
+        align-self: flex-start;
+        max-width: 100%;
+        &_attached &-field {
+            display: none;
+        }
+        &_attached &-doc {
+            display: flex;
+        }
+    }
+    &__file-input {
+        appearance: none;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+    }
+    &__file-label,
+    &__file-doc {
+        align-items: center;
+        justify-content: flex-start;
+        align-items: center;
+        gap: rem(12);
+        span {
+            font-size: rem(18);
+            font-weight: 400;
+            line-height: calc(25 / 18);
+            letter-spacing: -0.02em;
+        }
+    }
+    &__file-label {
+        cursor: pointer;
+        display: flex;
+        transition: background-color 0.2s ease 0s;
+        .icon {
+            background-color: var(--background-color);
+            border-radius: 50%;
+            display: flex;
+            flex-shrink: 0;
+            position: relative;
+            width: rem(30);
+            height: rem(30);
+            &::before, &::after {
+                background-color: var(--black);
+                content: "";
+                position: absolute;
+                top: calc(50% - rem(1));
+                left: rem(10);
+                width: rem(10);
+                height: rem(2);
+            }
+            &::after {
+                transform: rotate(90deg);
+            }
+        }
+    }
+    &__file-doc {
+        cursor: auto;
+        display: none;
+        .text {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        button {
+            background-color: var(--background-color);
+            border-radius: 50%;
+            display: flex;
+            flex-shrink: 0;
+            position: relative;
+            width: rem(30);
+            height: rem(30);
+            &::before, &::after {
+                background-color: var(--black);
+                content: "";
+                position: absolute;
+                top: calc(50% - rem(1));
+                left: rem(10);
+                width: rem(10);
+                height: rem(2);
+            }
+            &::after {
+                transform: rotate(45deg);
+            }
+            &::before {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
     &__footer {
         display: flex;
         align-items: center;
@@ -182,6 +283,11 @@
     }
     &__link {
 
+    }
+    @media screen and (min-width: 993px) {
+        &__file {
+            max-width: rem(420);
+        }
     }
     @include phone {
         &__header {
