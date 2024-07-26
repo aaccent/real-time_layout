@@ -83,6 +83,7 @@
             </div>
         </div>
     </section>
+    {% include "pages-blocks/running-line.njk" %}
     <section class="content section">
         <div class="content__column">
             <h2>Коммерческое проектирование в Москве</h2>
@@ -162,6 +163,8 @@
 
 {% block scripts %}
     <script src="js/libs/swiper-bundle.min.js"></script>
+    <script src="js/libs/gsap.min.js"></script>
+    <script src="js/libs/ScrollTrigger.min.js"></script>
     <script src="js/libs/fancybox.umd.js"></script>
     {{ super() }}
 {% endblock %}

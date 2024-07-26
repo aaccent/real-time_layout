@@ -166,6 +166,53 @@ function initMap(mapContainerId) {
 //     isMobile = true;
 // }
 
+class RunningLine {
+    breakpoint;
+    mediaQuery;
+
+    constructor(elem) {
+        this.elem = elem.firstElementChild;
+        this.paddingValue = window.innerWidth - this.elem.parentElement.offsetWidth
+    }
+
+    needInsert() {
+        // console.log(this.elem.offsetWidth, this.elem.parentElement.offsetWidth)
+        let r = Math.floor(this.elem.offsetWidth / (this.elem.parentElement.offsetWidth + this.paddingValue))
+        return r < 2 // r == 1 
+    }
+
+    insertItems() {
+        const items = Array.from(this.elem.children);
+        for (let i = 0; i < items.length; i++) {
+            this.elem.append(items[i].cloneNode(true))
+        }
+        this.elem.style.animationDuration = parseInt(getComputedStyle(this.elem).animationDuration) * 2 + "s"
+        // console.log("insetred")
+    }
+
+    updateValues() {
+        this.breakpoint = this.elem.offsetWidth / 2 + 0.5;
+        this.mediaQuery = window.matchMedia(`(min-width: ${this.breakpoint}px)`);
+        // console.log("breakpoint", this.breakpoint)
+    }
+
+    handleChangeMediaQuery = (e) => {
+        if (e.matches) {
+            this.needInsert() && this.insertItems()
+            this.updateValues()
+            this.mediaQuery.addEventListener("change", this.handleChangeMediaQuery, { once: true} )
+        }
+    }
+
+    init() {
+        while (this.needInsert()) {
+            this.insertItems()
+        }
+        this.updateValues()
+        this.mediaQuery.addEventListener("change", this.handleChangeMediaQuery, { once: true} )
+    }
+}
+
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
 let vh = window.innerHeight * 0.01;
 // Then we set the value in the --vh custom property to the root of the document
@@ -238,20 +285,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const tabletMediaQuery = window.matchMedia("(max-width: 992px)")
     const gapMediaQuery = window.matchMedia("(max-width: 768px)")
     const phoneMediaQuery = window.matchMedia("(max-width: 576px)")
-    // const callback = function(entries, observer) {
-    //     // элемент в видимой части экрана
-    //     // в данном случае это headerEl
-    //     if (entries[0].isIntersecting) {
-    //         headerEl.classList.remove("header_scroll")
-    //     } else {
-    //         // элемент пропал с видимой части экрана
-    //         headerEl.classList.add("header_scroll")
-    //     }
-    // }
-
-    // const headerObserver = new IntersectionObserver(callback)
-    // headerObserver.observe(headerEl)
-
 
     serviceMenuItemEl.addEventListener("click", (e) => {
         if (e.target.closest(".submenu__backdrop")) {
@@ -383,6 +416,13 @@ document.addEventListener("DOMContentLoaded", () => {
     replaceButton(tabletMediaQuery)
     replaceCity(gapMediaQuery)
 
+    // RUNNING LINE
+    function setParallaxItemsStyle(offsetPercent) {
+        runningLineEl.firstElementChild.style.cssText = `transform: translate(-${offsetPercent / 4}%, 0%)`
+    }
+    const runningLineEl = document.querySelector(".running-line");
+    new RunningLine(runningLineEl).init()
+ 
 
     // SERVICES
     if (document.querySelector(".services__list")) {
@@ -393,7 +433,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!currentServiceItem || currentServiceItem.classList.contains("_animating") || e.target.closest(".service__arrow") || window.innerWidth < 769) {
                 return
             }
-
 
             e.preventDefault()
 
@@ -833,6 +872,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.querySelector(".gallery__popup").classList.add("gallery__popup--open")
             })
         }
+    }
+
+    if (window.ScrollTrigger ) {
+        gsap.registerPlugin(ScrollTrigger) 
+        gsap.to(".running-line__wrapper", {
+            scrollTrigger: {
+                trigger: ".running-line__wrapper",
+                start: "top 80%",
+                end: "top top",
+                scrub: 1
+            },
+            xPercent: -10,
+        })
     }
 
     if (window.Fancybox) {

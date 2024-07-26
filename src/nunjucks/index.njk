@@ -11,6 +11,7 @@
 
 {% block content %}
     {% include "pages-blocks/hero.njk" %}
+    {% include "pages-blocks/running-line.njk" %}
     {% include "pages-blocks/advantages.njk" %}
     {% include "pages-blocks/services.njk" %}
     {% include "pages-blocks/contact-us.njk" %}
@@ -23,5 +24,7 @@
 
 {% block scripts %}
     <script src="js/libs/swiper-bundle.min.js"></script>
+    <script src="js/libs/gsap.min.js"></script>
+    <script src="js/libs/ScrollTrigger.min.js"></script>
     {{ super() }}
 {% endblock %}

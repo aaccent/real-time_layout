@@ -49,6 +49,7 @@ body {
     font-size: rem(15);
     line-height: rem(20);
     min-width: rem(320);
+    overflow-x: hidden;
     &._lock {
         height: 100%;
         overflow: hidden;
