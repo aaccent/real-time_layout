@@ -10,10 +10,14 @@
         position: relative;
         height: rem(440);
         width: 100%;
+        overflow: hidden;
         img {
+            position: relative;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.4s ease-out 0s;
+            z-index: 1;
         }
         &:not(:last-child) {
             margin: 0 0 rem(40);
@@ -26,6 +30,8 @@
         position: absolute;
         top: rem(15);
         right: rem(15);
+        transition: opacity 0.3s ease 0s;
+        z-index: 2;
     }
 
     &__tag {
@@ -65,8 +71,16 @@
     &__link-label {
     }
     @include ishover {
+        .project__image {
+            img {
+                transform: scale(1.02);
+            }
+        }
         .project__link {
             color: var(--red)
+        }
+        .project__tags {
+            opacity: 0;
         }
     }
     @include desktop {

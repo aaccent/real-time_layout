@@ -8,6 +8,7 @@
     --header-z-index: 10;
     --dropdown-z-index: 12;
     --popup-z-index: 15;
+    --cookies-z-index: 18;
     --preloader-z-index: 20;
     --container-padding: 0.9375rem;
     @include phone {
@@ -125,6 +126,45 @@ body {
     }
 }
 
+.cookies {
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: rem(35);
+    padding: rem(18) rem(18) rem(18) rem(30);
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: rem(565);
+    max-width: 100%;
+    visibility: hidden;
+    transform: translate(0, 100%);
+    transition: transform 0.4s ease-out, visibility 0.4s ease;
+    z-index: var(--cookies-z-index);
+    &__text {
+        font-weight: 500;
+        text-transform: lowercase;
+    }
+    &__button {
+        .button__arrow {
+            color: var(--red) !important
+        }
+    }
+    &--show {
+        visibility: visible;
+        transform: translate(0, 0);
+    }
+    @include phone {
+        flex-direction: column;
+        gap: rem(20);
+        padding: rem(20);
+        &__text {
+            // max-width: rem(315);
+            text-align: center;
+        }
+    }
+    
+}
 
 // typography
 ._h1 {

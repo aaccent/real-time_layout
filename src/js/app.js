@@ -227,7 +227,7 @@ window.addEventListener('resize', () => {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Preloader
+    // PRELOADER
     function animateDigitCounter(counter, diffValue) {
         let startTimestamp = null;
         const duration = 80;
@@ -251,7 +251,8 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 preloaderEl.classList.add("preloader--closing")
                 preloaderEl.addEventListener("transitionend", () => {
-                    document.body.classList.remove("_lock")
+                    document.body.classList.remove("_lock");
+                    setTimeout(() => cookiesPopoverEl.classList.add("cookies--show"), 5000)
                 }, { once: true })
             }
         }
@@ -259,20 +260,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
 
-    // const preloaderEl = document.querySelector(".preloader")
-    // const preloaderLogoEl = preloaderEl.firstElementChild;
-    // const preloaderProgressEl = preloaderEl.querySelector(".preloader__progress span:first-child")
-    // let diff = Math.floor(Math.random() * 10);
+    const preloaderEl = document.querySelector(".preloader")
+    const preloaderLogoEl = preloaderEl.firstElementChild;
+    const preloaderProgressEl = preloaderEl.querySelector(".preloader__progress span:first-child")
+    let diff = Math.floor(Math.random() * 10);
 
-    // preloaderEl.classList.add("preloader--animating")
-    // preloaderLogoEl.addEventListener("transitionend", () => {
-    //     preloaderEl.lastElementChild.style.cssText = `
-    //         opacity: 1;
-    //         transform: none;
-    //     `
-    //     animateDigitCounter(preloaderProgressEl, diff)
-    // }, { once: true })
+    preloaderEl.classList.add("preloader--animating")
+    preloaderLogoEl.addEventListener("transitionend", () => {
+        preloaderEl.lastElementChild.style.cssText = `
+            opacity: 1;
+            transform: none;
+        `
+        animateDigitCounter(preloaderProgressEl, diff)
+    }, { once: true })
 
+
+    // cookies
+    var cookiesPopoverEl = document.querySelector(".cookies")
+    cookiesPopoverEl.addEventListener("click", (e) => {
+        if (e.target.closest("button")) {
+            cookiesPopoverEl.classList.remove("cookies--show")
+        }
+    })
 
     // Header
     const headerEl = document.querySelector(".header");

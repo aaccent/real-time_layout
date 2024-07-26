@@ -8,13 +8,13 @@
     
     {% endblock %}
 </head>
-<body class="">
-        {# <div class="preloader">
+<body class="_lock">
+    <div class="preloader">
         <object class="preloader__logo" data="/images/preloader-logo.svg" type="image/svg+xml"></object>
         <div class="preloader__progress">
             <span></span><span></span>
         </div>
-    </div> #}
+    </div>
     <div class="container">
         {% include "../pages-blocks/header.njk" %}
 
@@ -82,6 +82,17 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="cookies">
+        <div class="cookies__text">Используя данный сайт, вы даете согласие на использование файлов cookie</div>
+        <button class="cookies__button button button--black" type="button">
+            <span class="button__label">Принять</span>
+            <div class="button__arrow">
+                <svg>
+                    <use xlink:href="#arrow"></use>
+                </svg>
+            </div>
+        </button>
     </div>
     {% include "../pages-blocks/svg-sprites.njk" %}
     {% block scripts %}
