@@ -8,8 +8,14 @@
     
     {% endblock %}
 </head>
-<body>
+<body class="_lock">
 
+    <div class="preloader">
+        <object class="preloader__logo" data="/images/preloader-logo.svg" type="image/svg+xml"></object>
+        <div class="preloader__progress">
+            <span></span><span></span>
+        </div>
+    </div>
     {% include "../pages-blocks/header.njk" %}
 
     {% block content %}

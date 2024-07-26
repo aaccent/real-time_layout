@@ -178,7 +178,54 @@ window.addEventListener('resize', () => {
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
 
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Preloader
+    function animateDigitCounter(counter, diffValue) {
+        let startTimestamp = null;
+        const duration = 80;
+        const initialValue = parseInt(counter.innerHTML) || 0
+
+        const step = (timestamp) => {
+            if (!startTimestamp) {
+                startTimestamp = timestamp
+            }
+            if (initialValue == 0) {
+                counter.nextElementSibling.innerHTML = "%"
+            }
+
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1)
+            counter.innerHTML = Math.min(initialValue + Math.floor(progress * diffValue), 100);
+            if (progress < 1) {
+                window.requestAnimationFrame(step)
+            } else if (parseInt(counter.innerHTML) < 100) {
+                diff = Math.floor(Math.random() * 10);
+                animateDigitCounter(counter, diff)
+            } else {
+                preloaderEl.classList.add("preloader--closing")
+                preloaderEl.addEventListener("transitionend", () => {
+                    document.body.classList.remove("_lock")
+                }, { once: true })
+            }
+        }
+        window.requestAnimationFrame(step)
+    }
+    
+
+    const preloaderEl = document.querySelector(".preloader")
+    const preloaderLogoEl = preloaderEl.firstElementChild;
+    const preloaderProgressEl = preloaderEl.querySelector(".preloader__progress span:first-child")
+    let diff = Math.floor(Math.random() * 10);
+
+    preloaderEl.classList.add("preloader--animating")
+    preloaderLogoEl.addEventListener("transitionend", () => {
+        preloaderEl.lastElementChild.style.cssText = `
+            opacity: 1;
+            transform: none;
+        `
+        animateDigitCounter(preloaderProgressEl, diff)
+    }, { once: true })
+
 
     // Header
     const headerEl = document.querySelector(".header");
@@ -823,7 +870,6 @@ window.onload = function() {
         })
     }
     if (window.mapboxgl) {
-        console.log("!!!!!")
         initMap("map")
     }
-}
+})

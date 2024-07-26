@@ -8,6 +8,7 @@
     --header-z-index: 10;
     --dropdown-z-index: 12;
     --popup-z-index: 15;
+    --preloader-z-index: 20;
     --container-padding: 0.9375rem;
     @include phone {
         --container-padding: 0.625rem;
@@ -57,6 +58,69 @@ body {
     }
 }
 
+.preloader {
+    background-color: var(--grey);
+    position: fixed;
+    inset: 0;
+    transition: opacity 0.4s ease 0s;
+    z-index: var(--preloader-z-index);
+    &__logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+        transform: translate(-50%, -150%);
+        transition: transform 0.8s ease 0s, opacity 0.8s ease 0s;
+    }
+    &__progress {
+        display: flex;
+        align-items: baseline;
+        gap: rem(12);
+        font-size: rem(82);
+        @include adaptive-value(font-size, 40, 82, 576, $container-width);
+        font-weight: 400;
+        line-height: calc(80 / 82);
+        letter-spacing: -0.03em;
+        position: absolute;
+        left: rem(40);
+        bottom: rem(15);
+        opacity: 0;
+        transform: translate(-20%, 0%);
+        transition: opacity 0.2s ease 0s, transform 0.2s ease 0s;
+        span {
+            &:first-child {
+
+            }
+            &:last-child {
+                color: var(--red);
+                font-size: calc(42 / 82 * 1em);
+            }
+        }
+    }
+    &--animating {
+        .preloader__logo {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+    }
+    &--closing {
+        opacity: 0;
+        .preloader__logo {
+            transition: transform 0.4s ease-in 0s;
+            transform: translate(-50%, -50%) scale(1.3);
+        }
+    }
+    @include phone {
+        &__logo {
+            width: rem(200);
+        }
+        &__progress {
+            left: rem(20);
+            bottom: rem(15);
+            line-height: calc(45 / 40);
+        }
+    }
+}
 
 .container {
     margin: 0 auto;
