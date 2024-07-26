@@ -1,62 +1,60 @@
 <section class="contact-us section">
-    <div class="container">
-        <div class="contact-us__content">
-            <div class="contact-us__image">
-                <img src="/images/feedback.png" alt="">
+    <div class="contact-us__content">
+        <div class="contact-us__image">
+            <img src="/images/feedback.png" alt="">
+        </div>
+        <form action="#" method="POST" class="contact-us__form form" name="call-back">
+            <div class="form__header">
+                <div class="form__title">Остались вопросы? Оставьте заявку!</div>
+                <div class="form__desc">Опишите свой вопрос в форме ниже, вам перезвонит специалист для консультации</div>
             </div>
-            <form action="#" method="POST" class="contact-us__form form" name="call-back">
-                <div class="form__header">
-                    <div class="form__title">Остались вопросы? Оставьте заявку!</div>
-                    <div class="form__desc">Опишите свой вопрос в форме ниже, вам перезвонит специалист для консультации</div>
+            <div class="form__body">
+                <div class="form__field">
+                    <label for="name" class="form__label">Ваше имя</label>
+                    <input type="text" class="form__input form__input--required" name="name" id="name" placeholder="Ваше имя">
                 </div>
-                <div class="form__body">
-                    <div class="form__field">
-                        <label for="name" class="form__label">Ваше имя</label>
-                        <input type="text" class="form__input form__input--required" name="name" id="name" placeholder="Ваше имя">
-                    </div>
-                    <div class="form__field">
-                        <label for="phone" class="form__label">+7 (999)-999-99-99</label>
-                        <input type="tel" name="phone" class="form__input form__input--required" placeholder="+7 (999)-999-99-99" autocomplete="off">
-                    </div>
-                    <div class="form__field form__field--wide">
-                        <label for="comment" class="form__label">Сообщение</label>
-                        <textarea class="form__input form__input--textarea" name="comment" id="comment" placeholder="Сообщение"></textarea>
-                    </div>
-                    {% if file_input %}
-                        <div class="form__file">
-                            <div class="form__file-field">
-                                <input class="form__file-input" type="file" id="file" accept=".pdf, .doc, .docx"> 
-                                <label class="form__file-label" for="file">
-                                    <div class="icon"></div>
-                                    <span class="text">Прикрепить файл</span>
-                                </label>
-                            </div>
-                            <div class="form__file-doc">
-                                <span class="text"> </span>
-                                <button class="close" type="button"></button>
-                            </div>
+                <div class="form__field">
+                    <label for="phone" class="form__label">+7 (999)-999-99-99</label>
+                    <input type="tel" name="phone" class="form__input form__input--required" placeholder="+7 (999)-999-99-99" autocomplete="off">
+                </div>
+                <div class="form__field form__field--wide">
+                    <label for="comment" class="form__label">Сообщение</label>
+                    <textarea class="form__input form__input--textarea" name="comment" id="comment" placeholder="Сообщение"></textarea>
+                </div>
+                {% if file_input %}
+                    <div class="form__file">
+                        <div class="form__file-field">
+                            <input class="form__file-input" type="file" id="file" accept=".pdf, .doc, .docx"> 
+                            <label class="form__file-label" for="file">
+                                <div class="icon"></div>
+                                <span class="text">Прикрепить файл</span>
+                            </label>
                         </div>
-                    {% endif %}
-                </div>
-                <div class="form__footer">
-                    <button class="form__submit button button--black" type="submit">
-                        <span class="button__label">Получить консультацию</span>
-                        <div class="button__arrow">
-                            {# <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object> #}
-                            <svg>
-                                <use xlink:href="#arrow"></use>
-                            </svg>
+                        <div class="form__file-doc">
+                            <span class="text"> </span>
+                            <button class="close" type="button"></button>
                         </div>
-                    </button>
-                    <div class="form__agreement">Нажимая кнопку «Получить консультацию, вы соглашаетесь с <a href="#">политикой конфиденциальности</a></div>
-                </div>
-            </form>
-            <div>
-                <div class="_transparent">Подберем оптимальное<br>решение для вашей задачи</div>
-                <div class="contact-us__links">
-                    <div class="contact-us__link">Бесплатная консультация</div>
-                    <div class="contact-us__link">Перезвоним в течение 30 минут</div>
-                </div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form__footer">
+                <button class="form__submit button button--black" type="submit">
+                    <span class="button__label">Получить консультацию</span>
+                    <div class="button__arrow">
+                        {# <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object> #}
+                        <svg>
+                            <use xlink:href="#arrow"></use>
+                        </svg>
+                    </div>
+                </button>
+                <div class="form__agreement">Нажимая кнопку «Получить консультацию, вы соглашаетесь с <a href="#">политикой конфиденциальности</a></div>
+            </div>
+        </form>
+        <div>
+            <div class="_transparent">Подберем оптимальное<br>решение для вашей задачи</div>
+            <div class="contact-us__links">
+                <div class="contact-us__link">Бесплатная консультация</div>
+                <div class="contact-us__link">Перезвоним в течение 30 минут</div>
             </div>
         </div>
     </div>

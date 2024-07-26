@@ -140,6 +140,9 @@
             &:not(:last-child) {
                 margin-bottom: rem(20);
             }
+            .gallery__controls {
+                display: none;
+            }
         }
         &__body {
             padding-top: rem(25)
@@ -160,16 +163,4 @@
             }
         }
     }
-}
-.section {
-}
-.swiper-button-prev {
-}
-.swiper-button-next {
-}
-.swiper {
-}
-.swiper-wrapper {
-}
-.swiper-slide {
 }

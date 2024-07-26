@@ -175,42 +175,40 @@
 {% endmacro %}
 
 <header class="header">
-    <div class="header__container container">
-        <div class="header__main">
-            <a href="/" class="header__logo">
-                <object data="/images/logo.svg" type="image/svg+xml"></object>
-                <object data="/images/logo-hover.svg" type="image/svg+xml"></object>
-            </a>
-            <div class="header__city">
-                <svg class="header__city-icon">
-                    <use xlink:href="#geo"></use>
-                </svg>
-                {# <div class="header__city-icon">
-                    <object data="/images/svg-icons/geo.svg" type="image/svg+xml"></object>
-                </div> #}
-                <div class="header__city-label">Москва</div>
-            </div>
+    <div class="header__main">
+        <a href="/" class="header__logo">
+            <object data="/images/logo.svg" type="image/svg+xml"></object>
+            <object data="/images/logo-hover.svg" type="image/svg+xml"></object>
+        </a>
+        <div class="header__city">
+            <svg class="header__city-icon">
+                <use xlink:href="#geo"></use>
+            </svg>
+            {# <div class="header__city-icon">
+                <object data="/images/svg-icons/geo.svg" type="image/svg+xml"></object>
+            </div> #}
+            <div class="header__city-label">Москва</div>
         </div>
-        {% set menu_items = [
-            {label: "Услуги", href: "#"},
-            {label: "Портфолио", href: "/portfolio-page.html"},
-            {label: "О компании", href: "/about-page.html"},
-            {label: "Контакты", href: "/contacts-page.html"}
-        ] %}
-        {{ Menu(menu_items )}}
-        {{ MobileMenu(menu_items) }}
-        <div class="header__actions">
-            <a href="tel:89153400110" class="header__phone">8 (915) 340 01 10</a>
-            <button class="header__button header__call button button--black" type="button">
-                <span class="button__label">Консультация:</span>
-                <div class="button__arrow">
-                    <svg>
-                        <use xlink:href="#arrow"></use>
-                    </svg>
-                    {# <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object> #}
-                </div>
-            </button>
-        </div>
-        <div class="header__burger"></div>
     </div>
+    {% set menu_items = [
+        {label: "Услуги", href: "#"},
+        {label: "Портфолио", href: "/portfolio-page.html"},
+        {label: "О компании", href: "/about-page.html"},
+        {label: "Контакты", href: "/contacts-page.html"}
+    ] %}
+    {{ Menu(menu_items )}}
+    {{ MobileMenu(menu_items) }}
+    <div class="header__actions">
+        <a href="tel:89153400110" class="header__phone">8 (915) 340 01 10</a>
+        <button class="header__button header__call button button--black" type="button">
+            <span class="button__label">Консультация:</span>
+            <div class="button__arrow">
+                <svg>
+                    <use xlink:href="#arrow"></use>
+                </svg>
+                {# <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object> #}
+            </div>
+        </button>
+    </div>
+    <div class="header__burger"></div>
 </header>

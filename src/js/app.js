@@ -212,19 +212,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
 
-    const preloaderEl = document.querySelector(".preloader")
-    const preloaderLogoEl = preloaderEl.firstElementChild;
-    const preloaderProgressEl = preloaderEl.querySelector(".preloader__progress span:first-child")
-    let diff = Math.floor(Math.random() * 10);
+    // const preloaderEl = document.querySelector(".preloader")
+    // const preloaderLogoEl = preloaderEl.firstElementChild;
+    // const preloaderProgressEl = preloaderEl.querySelector(".preloader__progress span:first-child")
+    // let diff = Math.floor(Math.random() * 10);
 
-    preloaderEl.classList.add("preloader--animating")
-    preloaderLogoEl.addEventListener("transitionend", () => {
-        preloaderEl.lastElementChild.style.cssText = `
-            opacity: 1;
-            transform: none;
-        `
-        animateDigitCounter(preloaderProgressEl, diff)
-    }, { once: true })
+    // preloaderEl.classList.add("preloader--animating")
+    // preloaderLogoEl.addEventListener("transitionend", () => {
+    //     preloaderEl.lastElementChild.style.cssText = `
+    //         opacity: 1;
+    //         transform: none;
+    //     `
+    //     animateDigitCounter(preloaderProgressEl, diff)
+    // }, { once: true })
 
 
     // Header
@@ -363,7 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.matches) {
             mobileMenuEl.querySelector(".header__actions").append(buttonEl)
         } else {
-            headerEl.querySelector(".header__container > .header__actions").append(buttonEl)
+            headerEl.querySelector(".header > .header__actions").append(buttonEl)
         }
     }
 

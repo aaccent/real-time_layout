@@ -117,6 +117,7 @@
                 border-left: rem(1) solid rgba(0, 0, 0, 0.08);
                 border-right: rem(1) solid rgba(0, 0, 0, 0.08);
                 content: "";
+                pointer-events: none;;
                 position: absolute;
                 top: 0;
                 left: rem(-20);

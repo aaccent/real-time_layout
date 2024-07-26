@@ -208,6 +208,18 @@ body {
     // }
 }
 
+.section {
+    &:not(:first-child) {
+        margin-top: rem(140);
+        @include adaptive-value(margin-top, 70, 140, 576, $container-width)
+    }
+    // @include phone {
+    //     &:not(:first-child) {
+    //         margin-top: rem(70);
+    //     }
+    // }
+}
+
 ._transparent {
     opacity: 0.55;
 }

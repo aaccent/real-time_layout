@@ -101,15 +101,3 @@
         }
     }
 }
-
-
-.section {
-    &:not(:first-child) {
-        margin-top: rem(140);
-    }
-    @include phone {
-        &:not(:first-child) {
-            margin-top: rem(70);
-        }
-    }
-}

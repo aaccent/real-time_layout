@@ -1,6 +1,8 @@
 .header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: rem(30);
     font-weight: 500;
     padding: rem(15) 0;
     position: relative;
@@ -14,11 +16,7 @@
         z-index: -1;
     }
     &__container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: rem(30);
-        position: relative;
+
     }
     &__main {
         display: flex;

@@ -8,21 +8,25 @@
     
     {% endblock %}
 </head>
-<body class="_lock">
-
-    <div class="preloader">
+<body class="">
+        {# <div class="preloader">
         <object class="preloader__logo" data="/images/preloader-logo.svg" type="image/svg+xml"></object>
         <div class="preloader__progress">
             <span></span><span></span>
         </div>
+    </div> #}
+    <div class="container">
+        {% include "../pages-blocks/header.njk" %}
+
+        <main class="main">
+        {% block content %}
+        
+        {% endblock %}
+        </main>
+
+        {% include "../pages-blocks/footer.njk" %}
     </div>
-    {% include "../pages-blocks/header.njk" %}
 
-    {% block content %}
-    {% endblock %}
-
-    {% include "../pages-blocks/footer.njk" %}
-    
     <div class="popup popup--consultation">
         <div class="popup__container">
             <div class="popup__content">

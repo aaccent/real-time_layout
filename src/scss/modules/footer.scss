@@ -2,8 +2,6 @@
 
     margin: rem(170) 0 0;
     @include adaptive-value(margin-top, 70, 140, 576, $container-width);
-    &__container {
-    }
 
     &__content {
         background-color: #252529;
@@ -332,6 +330,9 @@
                 .footer__services-body {
                     height: auto;
                 }
+                .footer__services-arrow {
+                    transform: rotate(180deg);
+                }
             }
         }
         &__services-body {
@@ -342,7 +343,13 @@
             margin-bottom: rem(20);
         }
         &__services-arrow {
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            svg {
+                width: rem(16);
+                height: rem(8);
+            }
         }
         &__menu-item, &__services-header {
             border-top: rem(1) solid rgba(255, 255, 255, 0.08);

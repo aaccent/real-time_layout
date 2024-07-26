@@ -1,6 +1,4 @@
 .projects {
-    &__project {
-    }
     position: relative;
     z-index: 2;
 
@@ -182,9 +180,12 @@
                 margin-bottom: rem(20);
             }
         }
-        // &__thumb-swiper {
-        //     overflow: visible;
-        // }
+        &__thumb-swiper {
+            .swiper-slide {
+                width: rem(60);
+                height: rem(60);
+            }
+        }
         &__amount {
             gap: rem(5);
         }

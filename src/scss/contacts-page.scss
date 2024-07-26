@@ -57,7 +57,7 @@
 }
 
 .map {
-    margin: rem(15) 0 rem(140);
+    margin: rem(15) 0 0;
     @include adaptive-value(margin-bottom, 70, 140, 576, $container-width);
     height: rem(680);
     .mapboxgl-control-container {
