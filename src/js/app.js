@@ -779,7 +779,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
 
         projectsSwiper.controller.control = projectsBackgroundSwiper;
-        // projectsBackgroundSwiper.controller.control = projectsSwiper;
+        
         // gallery
         new Swiper(".gallery__swiper", {
             slidesPerView: 3,
@@ -794,20 +794,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 // },
             },
             navigation: {
-                nextEl: ".gallery__swiper .swiper-button-next",
-                prevEl: ".gallery__swiper .swiper-button-prev",
+                nextEl: ".gallery__header .swiper-button-next",
+                prevEl: ".gallery__header .swiper-button-prev",
             },
         })
+
         let galleryPopupSlider = new Swiper(".gallery__popup-swiper", {
             slidesPerView: 1,
             spaceBetween: 10,
+            loop: true,
             breakpoints: {
                 577: {
                     spaceBetween: 15
                 },
-                // 1280: {
-                //     slidesPerView: 3
-                // },
+
             },
             navigation: {
                 nextEl: ".swiper-button-next",
@@ -818,6 +818,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (document.querySelector(".gallery")) {
             document.querySelector(".gallery").addEventListener("click", e => {
                 if (e.target.closest(".gallery__popup-close") || e.target.closest(".gallery__popup-backdrop")) {
+                    unlockBody()
                     document.querySelector(".gallery__popup").classList.remove("gallery__popup--open")
                     return
                 }
@@ -828,6 +829,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 let currentIndex =  parseInt(e.target.closest(".gallery__slide").getAttribute("aria-label"))
                 galleryPopupSlider.slideTo(currentIndex - 1, 0)
+                lockBody()
                 document.querySelector(".gallery__popup").classList.add("gallery__popup--open")
             })
         }

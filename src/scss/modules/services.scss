@@ -20,11 +20,6 @@
     }
     &__title {
         color: inherit;
-        font-size: rem(82);
-        // @include adaptive-value(font-size, 40, 82, 576, $container-width);
-        font-weight: 400;
-        line-height: calc(80 / 82);
-        letter-spacing: -0.03em;
     }
 
     &__list {
@@ -44,9 +39,6 @@
                 margin-bottom: rem(40);
             }
         }
-        &__title {
-            font-size: rem(60);
-        }
         // &__service-item {
         //     &:not(:last-child) {
         //         margin-bottom: rem(40);
@@ -63,7 +55,6 @@
             }
         }
         &__title {
-            font-size: rem(40);
             line-height: calc(45 / 40);
         }
         // &__service-item {
@@ -179,6 +170,7 @@
         object {
             width: rem(9);
         }
+        
         svg {
             width: rem(9);
             height: rem(9);

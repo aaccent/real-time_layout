@@ -1,0 +1,54 @@
+@mixin h1 {
+    font-size: rem(82);
+    font-weight: 400;
+    line-height: calc(80 / 82);
+    letter-spacing: -0.03em;
+    @include tablet {
+        font-size: rem(60);
+    }
+    @include phone {
+        font-size: rem(40);
+        line-height: calc(45 / 40);
+    }
+}
+
+@mixin h1_fluid {
+    font-size: rem(82);
+    @include adaptive-value(font-size, 40, 82, 576, $container-width);
+    font-weight: 400;
+    line-height: calc(80 / 82);
+    letter-spacing: -0.03em;
+    @include phone {
+        line-height: calc(45 / 40);
+    }
+}
+
+@mixin h2 {
+    font-size: rem(48);
+    font-weight: 400;
+    line-height: calc(50 / 48);
+    letter-spacing: -0.02em;
+    @include tablet {
+        font-size: rem(36);
+    }
+    @include phone {
+        font-size: rem(22);
+        line-height: calc(25 / 20);
+    }
+}
+
+@mixin h2_medium {
+    @include h2;
+    font-weight: 500;
+}
+
+@mixin h3 {
+    font-size: rem(32);
+    font-weight: 400;
+    line-height: calc(35 / 32);
+    letter-spacing: -0.03em;
+}
+
+@mixin h3_medium {
+    font-weight: 500;
+}

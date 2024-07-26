@@ -3,6 +3,7 @@
 @import "base/_fonts.scss";
 @import "base/_icons.scss";
 @import "base/_reset.scss";
+@import "mixins/_fonts.scss";
 @import "mixins/breakpoints.scss";
 @import "mixins/media.scss";
 @import "base.scss";
@@ -51,10 +52,7 @@
     }
 
     &__title {
-        font-size: rem(48);
         font-weight: 500;
-        line-height: calc(50/48);
-        letter-spacing: -0.03em;
         &:not(:last-child) {
             margin: 0 0 calc(25 / 48 * 1em)
         }
@@ -95,10 +93,6 @@
         &__content {
             padding: rem(40)
         }
-        &__title {
-            font-size: rem(36)
-        }
-
     }
     @include gap {
         display: flex;
@@ -127,8 +121,6 @@
             padding: rem(20)
         }
         &__title {
-            font-size: rem(28);
-            line-height: rem(30);
             &:not(:last-child) {
                 margin-bottom: rem(15)
             }

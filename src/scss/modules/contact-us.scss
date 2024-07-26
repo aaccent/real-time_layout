@@ -84,6 +84,7 @@
         &__image {
             align-self: center;
             width: rem(420);
+            max-height: rem(480);
         }
     }
     @include phone {

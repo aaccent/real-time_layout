@@ -21,7 +21,7 @@
                     </li>
                 </ol>
             </nav>
-            <h1 class="hero__title">О Компании</h1>
+            <h1 class="hero__title _h1_fluid">О Компании</h1>
         </section>
     </div>
     {% include "pages-blocks/blockquote.njk" %}
@@ -43,7 +43,10 @@
                 <div>
                     <img src="" alt="">
                     <div>
-                        <object data="/images/svg-icons/play.svg" type="image/svg+xml"></object>
+                        {# <object data="/images/svg-icons/play.svg" type="image/svg+xml"></object> #}
+                        <svg>
+                            <use xlink:href="#play"></use>
+                        </svg>
                     </div>
                 </div>
                 <p>Как настроена вентиляционная коммуникация</p>

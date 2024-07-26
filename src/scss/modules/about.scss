@@ -38,11 +38,6 @@
     } 
 
     &__desc-title {
-        font-size: rem(82);
-        @include adaptive-value(font-size, 40, 82, 576, $container-width);
-        font-weight: 400;
-        line-height: calc(80 / 82);
-        letter-spacing: -0.03em;
         text-align: center;
         &:not(:last-child) {
             margin: 0 0 rem(40);

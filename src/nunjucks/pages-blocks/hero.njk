@@ -1,33 +1,10 @@
-{% macro Hero() %}
-    <div class="hero-slide">
-        <div class="hero-slide__content">
-            {# <div class="hero-slide__content-wrapper"> #}
-                <div class="hero-slide__title">Проектирование ресторанов, баров и кафе в торговых центрах</div>
-                <a href="#" class="hero-slide__link button button--white">
-                    <span class="button__label">Узнать подробнее</span>
-                    <div class="button__arrow">
-                        {# <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object> #}
-                        <svg>
-                            <use xlink:href="#arrow"></use>
-                        </svg>
-                    </div>
-                </a>
-                <ul class="hero-slide__desc">
-                    <li class="hero-slide__desc-item">от 2 месяцев</li>
-                    <li class="hero-slide__desc-item">под ключ</li>
-                    <li class="hero-slide__desc-item">от 4000 ₽/м²</li>
-                </ul>
-            {# </div> #}
-        </div>
-        <div class="hero-slide__image">
-            <img src="" alt="">
-        </div>
-    </div>
-{% endmacro %}
-
-{% macro DescSlide() %}
+{% macro DescSlide(index) %}
     <div class="hero-info">
-        <div class="hero-info__title">Проектирование ресторанов, баров и кафе в торговых центрах</div>
+        {% if condition %}
+            <h1 class="hero-info__title">Проектирование ресторанов, баров и кафе в торговых центрах</h1>
+        {% else %}
+            <h2 class="hero-info__title">Проектирование ресторанов, баров и кафе в торговых центрах</h2>
+        {% endif %}
         <a href="/single-service-page.html" class="hero-info__button button button--white">
             <span class="button__label">Узнать подробнее</span>
             <div class="button__arrow">
@@ -58,7 +35,7 @@
             <div class="swiper-wrapper">
                 {% for i in range(1, 4) %}
                     <div class="swiper-slide">
-                        {{ DescSlide() }}
+                        {{ DescSlide(i) }}
                     </div>
                 {% endfor %}
             </div>
@@ -72,15 +49,6 @@
                 {% endfor %}
             </div>
         </div>
-        {# <div class="hero__swiper swiper">
-            <div class="swiper-wrapper">
-                {% for item in range(1,5) %}
-                    <div class="swiper-slide">
-                        {{ Hero() }}
-                    </div>
-                {% endfor %}
-            </div>
-        </div> #}
         <div class="hero__thumb-swiper swiper">
             <div class="swiper-wrapper">
                 {% for i in range(1, 4) %}
@@ -91,10 +59,16 @@
             </div>
             <div class="swiper-controls">
                 <div class="swiper-button-prev">
-                    <object data="/images/svg-icons/navigation-arrow.svg" type="image/svg+xml"></object>
+                    {# <object data="/images/svg-icons/navigation-arrow.svg" type="image/svg+xml"></object> #}
+                    <svg>
+                        <use xlink:href="#navigation-arrow"></use>
+                    </svg>
                 </div>
                 <div class="swiper-button-next">
-                    <object data="/images/svg-icons/navigation-arrow.svg" type="image/svg+xml"></object>
+                    {# <object data="/images/svg-icons/navigation-arrow.svg" type="image/svg+xml"></object> #}
+                    <svg>
+                        <use xlink:href="#navigation-arrow"></use>
+                    </svg>
                 </div>
             </div>
         </div>

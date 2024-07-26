@@ -23,11 +23,6 @@
     }
 
     &__title {
-        font-size: rem(82);
-        @include adaptive-value(font-size, 40, 82, 576, $container-width);
-        font-weight: 400;
-        line-height: calc(80 / 82);
-        letter-spacing: -0.03em;
         &:not(:last-child) {
             margin: 0 0 0.4375em;
         }
@@ -132,7 +127,7 @@
             grid-template-columns: 1fr;
             // display: flex;
             // flex-direction: column;
-            & > * {
+            & > *:not(.projects__background-swiper){
                 grid-column: 1 / 2;
                 grid-row: auto;
             }

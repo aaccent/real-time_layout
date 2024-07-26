@@ -3,6 +3,7 @@
 @import "base/_fonts.scss";
 @import "base/_icons.scss";
 @import "base/_reset.scss";
+@import "mixins/_fonts.scss";
 @import "mixins/breakpoints.scss";
 @import "mixins/media.scss";
 @import "base.scss";
@@ -42,11 +43,6 @@
     }
 
     &__title {
-        position: relative;
-        font-size: rem(82);
-        @include adaptive-value(font-size, 40, 82, 576, $container-width);
-        font-weight: 400;
-        line-height: calc(80 / 82);
         margin-top: calc(230 / 82 * 1em);
     }
 

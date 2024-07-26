@@ -4,6 +4,7 @@
 {% block styles %}
 
     <link rel="stylesheet" href="css/libs/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/libs/fancybox.css">    
     <link rel="stylesheet" href="css/subservice-page.min.css">
 
 {% endblock %}
@@ -20,7 +21,7 @@
                         <a href="#" class="breadcrumbs__link">Услуги</a>
                     </li>
                     <li class="breadcrumbs__item">
-                        <a href="#" class="breadcrumbs__link">Вентиляция и кондиционирование</a>
+                        <a href="/single-service-page.html" class="breadcrumbs__link">Вентиляция и кондиционирование</a>
                     </li>
                     <li class="breadcrumbs__item">
                         <a href="#" class="breadcrumbs__link">Обслуживание систем вентиляции</a>
@@ -31,15 +32,18 @@
                 <img src="/images/service-01.png" alt="">
             </div>
             <div class="hero__content">
-                <h1 class="hero__title">Обслуживание систем вентиляции</h1>
+                <h1 class="hero__title _h2">Обслуживание систем вентиляции</h1>
                 <div class="hero__desc _transparent">Задача организации, в особенности же рамки и место обучения кадров влечет за собой процесс задача организации, в особенности же рамки</div>
                 <div class="hero__actions">
-                    <div class="hero__button button button--white">
+                    <button class="hero__button button button--white" type="button">
                         <span class="button__label">Рассчитать стоимость</span>
                         <div class="button__arrow">
-                            <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object>
+                            {# <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object> #}
+                            <svg>
+                                <use xlink:href="#arrow"></use>
+                            </svg>
                         </div>
-                    </div>
+                    </button>
                     <div class="hero__action-desc">
                         <object data="/images/svg-icons/whatsapp-attachment.svg" type="image/svg+xml"></object>
                         <span>Отправим расчет на Whatsapp в течение недели со дня заявки</span>
@@ -65,7 +69,10 @@
                     <div>
                         <img src="" alt="">
                         <div>
-                            <object data="/images/svg-icons/play.svg" type="image/svg+xml"></object>
+                            {# <object data="/images/svg-icons/play.svg" type="image/svg+xml"></object> #}
+                            <svg>
+                                <use xlink:href="#play"></use>
+                            </svg>
                         </div>
                     </div>
                     <p>Как настроена вентиляционная коммуникация</p>
@@ -107,5 +114,6 @@
 
 {% block scripts %}
     <script src="js/libs/swiper-bundle.min.js"></script>
+    <script src="js/libs/fancybox.umd.js"></script>
     {{ super() }}
 {% endblock %}

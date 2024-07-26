@@ -10,15 +10,19 @@
     }
 
     &__title {
-        font-size: rem(48);
         font-weight: 500;
-        line-height: calc(50 / 48);
     }
 
     &__controls {
         background-color: var(--background-color);
+        color: var(--black);
         &::after {
             background-color: rgba(0, 0, 0, 0.1);
+        }
+        .swiper-button-prev, .swiper-button-next {
+            @include ishover {
+                background-color: rgba(0, 0, 0, 0.14);
+            }
         }
     }
 
@@ -108,14 +112,14 @@
         flex-direction: column;
         gap: rem(30);
         max-width: rem(1040);
+        .swiper-controls {
+            color: var(--red)
+        }
     }
     &__popup-slide {
 
     }
     @include tablet {
-        &__title {
-            font-size: rem(36);
-        }
         &__slide {
             width: rem(420);
         }
@@ -136,10 +140,6 @@
             &:not(:last-child) {
                 margin-bottom: rem(20);
             }
-        }
-        &__title {
-            font-size: rem(28);
-            line-height: rem(30);
         }
         &__body {
             padding-top: rem(25)
