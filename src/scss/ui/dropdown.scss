@@ -2,7 +2,7 @@
     font-weight: 600;
     position: relative;
     text-transform: lowercase;
-    z-index: 5;
+    z-index: var(--dropdown-z-index);
     &__header {
         background-color: var(--white);
         border-radius: rem(35);
@@ -12,6 +12,9 @@
         align-items: center;
         gap: rem(20);
         padding: rem(21) rem(30) rem(24);
+        position: relative;
+        transition: border-radius 0.25s ease 0s;
+        z-index: 2;
     }
 
     &__title {
@@ -19,9 +22,15 @@
     }
 
     &__arrow {
+        color: var(--red);
         display: flex;
         justify-content: center;
         align-items: center;
+        transform: rotate(90deg);
+        svg {
+            width: rem(11);
+            height: rem(11);
+        }
     }
 
     &__close {
@@ -59,8 +68,10 @@
         top: 100%;
         left: 0;
         right: 0;
+        transform: translate(0, -10%);
         opacity: 0;
         visibility: hidden;
+        transition: all 0.25s ease 0s;
     }
 
     &__list-item {
@@ -77,9 +88,10 @@
             border-bottom-right-radius: 0;
         }
         .dropdown__arrow {
-            transform: rotate(-180deg);
+            transform: rotate(-90deg);
         }
         .dropdown__list {
+            transform: none;
             opacity: 1;
             visibility: visible;
         }

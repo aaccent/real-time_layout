@@ -88,8 +88,8 @@
                 cursor: pointer;
                 display: flex;
                 align-items: center;
-                gap: 8px;
-                padding: 18px 25px 21px ;
+                gap: rem(8);
+                padding: rem(18) rem(25) rem(21) ;
                 &._open {
                     background-color: var(--black);
                     color: var(--white);
@@ -163,6 +163,7 @@
                     border-bottom: 1px solid rgba($color: #28282C, $alpha: 0.08);
                 }
                 &:first-child {
+                    cursor: pointer;
                     flex-wrap: wrap;
                     &._open {
                         .header__menu-arrow {
@@ -178,6 +179,7 @@
                         transition: height 0.3s ease 0s;
                     }
                     .submenu {
+                        cursor: auto;
                     }
                     .submenu__list {
                         padding: rem(25) 0 0;
@@ -196,7 +198,7 @@
                         text-transform: lowercase;
                     }
                     .submenu__link {
-                        display: block;
+                        display: inline-block;
                     }
                     .submenu__menu {
                         background-color: var(--grey);

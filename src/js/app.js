@@ -172,22 +172,18 @@ class RunningLine {
 
     constructor(elem) {
         this.elem = elem.firstElementChild;
-        this.paddingValue = window.innerWidth - this.elem.parentElement.offsetWidth
+        this.item = this.elem.firstElementChild
+        this.paddingValue = document.body.offsetWidth - this.elem.parentElement.offsetWidth
     }
 
     needInsert() {
-        // console.log(this.elem.offsetWidth, this.elem.parentElement.offsetWidth)
-        let r = Math.floor(this.elem.offsetWidth / (this.elem.parentElement.offsetWidth + this.paddingValue))
-        return r < 2 // r == 1 
+        let r = Math.floor(this.elem.scrollWidth / window.innerWidth * 100) / 100
+        return r < 1.2 // r == 1 
     }
 
     insertItems() {
-        const items = Array.from(this.elem.children);
-        for (let i = 0; i < items.length; i++) {
-            this.elem.append(items[i].cloneNode(true))
-        }
-        this.elem.style.animationDuration = parseInt(getComputedStyle(this.elem).animationDuration) * 2 + "s"
-        // console.log("insetred")
+        this.elem.append(this.item.cloneNode(true))
+        console.log("inserted")
     }
 
     updateValues() {
@@ -225,6 +221,25 @@ window.addEventListener('resize', () => {
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
 
+
+window.onload = () => {
+    // RUNNING LINE
+    const runningLineEl = document.querySelector(".running-line");
+    new RunningLine(runningLineEl).init()
+
+    if (window.ScrollTrigger ) {
+        gsap.registerPlugin(ScrollTrigger) 
+        gsap.to(".running-line__wrapper", {
+            scrollTrigger: {
+                trigger: ".running-line__wrapper",
+                start: "top 50%",
+                end: "top 20%",
+                scrub: 1
+            },
+            xPercent: -10,
+        })
+    }
+}
 document.addEventListener("DOMContentLoaded", () => {
 
     // PRELOADER
@@ -291,6 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileMenuEl = headerEl.querySelector(".header__menu--mobile")
 
     // breakpoints
+    const desktopMediaQuery = window.matchMedia("(max-width: 1280px)")
     const tabletMediaQuery = window.matchMedia("(max-width: 992px)")
     const gapMediaQuery = window.matchMedia("(max-width: 768px)")
     const phoneMediaQuery = window.matchMedia("(max-width: 576px)")
@@ -375,9 +391,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const currentHeight = mobileMenuListEl.offsetHeight
         let submenuEl = null;
         
-        if ((e.target.classList.contains("submenu__item") || e.target.classList.contains("submenu__link") && e.target.closest(".submenu__item").childElementCount === 2)) {
+        if (( e.target.classList.contains("submenu__link") && e.target.closest(".submenu__item").childElementCount === 2)) {
+            e.preventDefault()
+
             mobileMenuEl.classList.add("header__menu--submenu-open")
             submenuEl = e.target.parentElement.lastElementChild;
+            
             mobileMenuListEl.style.height = `${currentHeight}px`;
             setTimeout(() => mobileMenuListEl.style.height = `${submenuEl.offsetHeight}px`)
             submenuEl.style.cssText = `
@@ -419,6 +438,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function closeBurgerMenu(e) {
+        if (!e.matches && burgerMenuEl.classList.contains("header__burger--open")) {
+            Array.from(mobileMenuEl.querySelectorAll(".menu__item._open")).forEach(menuItemEl => {
+                menuItemEl.classList.remove("_open")
+                menuItemEl.querySelector(".submenu").style.height = ""
+                menuItemEl.querySelector(".submenu__menu").style.transform = ""
+            })
+            mobileMenuListEl.style.height = ""
+            mobileMenuEl.classList.remove("header__menu--open") 
+            mobileMenuEl.classList.remove("header__menu--submenu-open") 
+            burgerMenuEl.classList.remove("header__burger--open")
+            unlockBody()
+        }
+    }
+
+    desktopMediaQuery.addEventListener("change", closeBurgerMenu)
     tabletMediaQuery.addEventListener("change", replaceButton)
     gapMediaQuery.addEventListener("change", replaceCity)
 
@@ -426,11 +461,9 @@ document.addEventListener("DOMContentLoaded", () => {
     replaceCity(gapMediaQuery)
 
     // RUNNING LINE
-    function setParallaxItemsStyle(offsetPercent) {
-        runningLineEl.firstElementChild.style.cssText = `transform: translate(-${offsetPercent / 4}%, 0%)`
-    }
+    console.log("width", window.innerWidth)
     const runningLineEl = document.querySelector(".running-line");
-    new RunningLine(runningLineEl).init()
+    // new RunningLine(runningLineEl).init()
  
 
     // SERVICES
@@ -706,7 +739,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
 
-
     // article text
     if (document.querySelector(".article")) {
         const articleEl = document.querySelector(".article");
@@ -884,19 +916,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.querySelector(".gallery__popup").classList.add("gallery__popup--open")
             })
         }
-    }
-
-    if (window.ScrollTrigger ) {
-        gsap.registerPlugin(ScrollTrigger) 
-        gsap.to(".running-line__wrapper", {
-            scrollTrigger: {
-                trigger: ".running-line__wrapper",
-                start: "top 80%",
-                end: "top top",
-                scrub: 1
-            },
-            xPercent: -10,
-        })
     }
 
     if (window.Fancybox) {

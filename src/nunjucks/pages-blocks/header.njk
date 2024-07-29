@@ -70,8 +70,8 @@
                                 <ul class="submenu__list">
                                     {% for item in submenu_items %}
                                         <li class="submenu__item">
-                                            <a href="#" class="submenu__link">{{ item.category }}</a>
                                             {% if loop.index == 1 %}
+                                                <a href="#" class="submenu__link">{{ item.category }}</a>
                                                 <div class="submenu__menu">
                                                     <button class="submenu__back-button" type="button">
                                                         {# <object data="/images/svg-icons/menu-arrow.svg" type="image/svg+xml"></object> #}
@@ -88,6 +88,8 @@
                                                         {% endfor %}
                                                     </ul>
                                                 </div>
+                                            {% else %}
+                                                <a href="/single-service-page.html" class="submenu__link">{{ item.category }}</a>
                                             {% endif %}
                                         </li>
                                     {% endfor %}

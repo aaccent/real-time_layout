@@ -73,6 +73,7 @@
     display: flex;
     position: relative;
     height: calc(var(--vh, 1vh) * 100);
+    max-height: rem(945);
     &__container {
     }
     &__content-swiper, &__gallery-swiper {
@@ -95,6 +96,7 @@
         z-index: 1;
     }
     &__thumb-swiper {
+        margin: 0;
         .swiper-wrapper {
             min-width: 0;
         }
