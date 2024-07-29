@@ -762,6 +762,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let heroThumbSwiper = new Swiper(".hero__thumb-swiper", {
             slidesPerView: "auto",
             spaceBetween: 5,
+            loop: true,
+            watchSlidesProgress: true,
         })
         let heroGallerySwiper = new Swiper(".hero__gallery-swiper", {
             slidesPerView: 1,
@@ -772,16 +774,17 @@ document.addEventListener("DOMContentLoaded", () => {
             thumbs: {
                 swiper: heroThumbSwiper,
             },
+            navigation: {
+                nextEl: ".hero__thumb .swiper-button-next",
+                prevEl: ".hero__thumb .swiper-button-prev",
+            },
         })
         let heroContentSwiper = new Swiper(".hero__content-swiper", {
             slidesPerView: 1,
             spaceBetween: 20,
             speed: 800,
             loop: true,
-            navigation: {
-                nextEl: ".hero__thumb-swiper .swiper-button-next",
-                prevEl: ".hero__thumb-swiper .swiper-button-prev",
-            },
+            parallax: true,
         })
 
         heroGallerySwiper.controller.control = heroContentSwiper

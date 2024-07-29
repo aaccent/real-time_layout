@@ -1,56 +1,3 @@
-.hero-slide {
-    display: flex;
-    gap: rem(15);
-    color: var(--white);
-    height: calc(var(--vh, 1vh) * 100);
-    & > * {
-        flex: 0 0 calc((100% - rem(15)) / 2);
-    }
-    &__content {
-        background-color: #252529;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        // justify-content: center;
-        padding: rem(185) calc(82 / 1680 * 100%) rem(160);
-    }
-    // &__content-wrapper {
-    //     height: 100%;
-    // }
-    &__title {
-        color: var(--white);
-        font-size: rem(48);
-        font-weight: 500;
-        line-height: calc(50 / 48);
-        letter-spacing: -0.03em;
-        text-align: center;
-        &:not(:last-child) {
-            margin: 0 0 rem(40);
-        }
-    }
-
-    &__desc {
-        display: flex;
-        gap: rem(20);
-        margin: auto 0 0;
-    }
-
-    &__desc-item {
-        font-size: rem(15);
-        font-weight: 500;
-        line-height: calc(20 / 15);
-        text-transform: uppercase;
-    }
-
-    &__image {
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-}
-
 .hero-info {
     --padding-x: 5.125rem;
     color: #FFFFFF;
@@ -103,7 +50,7 @@
             height: rem(8);
         }
     }
-    @include tablet {
+    @media screen and (max-width: 1080px) {
         gap: rem(50);
         padding: 0;
         &__title {
@@ -134,16 +81,20 @@
     &__content-swiper {
         background-color: #252529;
     }
-    &__thumb-swiper {
+    &__thumb {
         border-top: rem(1) solid rgba(255, 255, 255, 0.15);
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: rem(20);
         padding: rem(30) 0;
         position: absolute;
         left: rem(30);
         bottom: 0;
         width: calc((100% - rem(15)) / 2 - rem(60));
+        z-index: 1;
+    }
+    &__thumb-swiper {
         .swiper-wrapper {
             min-width: 0;
         }
@@ -178,7 +129,7 @@
     .hero-info, .hero__image {
         height: 100%;
     }
-    @include tablet {
+    @media screen and (max-width: 1080px) {
         background-color: #252529;
         flex-direction: column-reverse;
         gap: rem(50);
@@ -206,7 +157,7 @@
         &__gallery-swiper {
             height: rem(550);
         }
-        &__thumb-swiper {
+        &__thumb {
             margin-left: auto;
             margin-right: auto;
             position: static;
@@ -220,10 +171,16 @@
             height: rem(450);
             overflow: visible;
         }
-        &__thumb-swiper {
+        &__thumb {
             .swiper-controls {
                 display: none;
             }
+        }
+        &__thumb-swiper {
+            margin-left: rem(-20);
+            margin-right: rem(-20);
+            padding-left: rem(20);
+            padding-right: rem(20);
         }
     }
     @include phone {
@@ -242,9 +199,11 @@
             aspect-ratio: calc(340 / 300);
             height: auto;
         }
-        &__thumb-swiper {
+        &__thumb {
             padding-bottom: rem(25);
             width: calc(100% - 2 * rem(10));
+        }
+        &__thumb-swiper {
             .swiper-slide {
                 width: rem(50);
                 height: rem(50);

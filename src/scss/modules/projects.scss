@@ -155,6 +155,15 @@
 
         }
     }
+    @include gap {
+        &__thumb-swiper {
+            margin-left: rem(-40);
+            margin-right: rem(-40);
+            padding-left: rem(40);
+            padding-right: rem(40);
+            width: auto;
+        }
+    }
     @include phone {
         &__content {
             padding: rem(20);
@@ -181,6 +190,11 @@
             }
         }
         &__thumb-swiper {
+            margin-left: rem(-20);
+            margin-right: rem(-20);
+            padding-left: rem(20);
+            padding-right: rem(20);
+            width: auto;
             .swiper-slide {
                 width: rem(60);
                 height: rem(60);

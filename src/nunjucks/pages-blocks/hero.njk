@@ -49,13 +49,15 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="hero__thumb-swiper swiper">
-            <div class="swiper-wrapper">
-                {% for i in range(1, 4) %}
-                    <div class="swiper-slide">
-                        <img src="/images/hero-gallery-0{{i}}.png" alt="">
-                    </div>
-                {% endfor %}
+        <div class="hero__thumb">
+            <div class="hero__thumb-swiper swiper">
+                <div class="swiper-wrapper">
+                    {% for i in range(1, 4) %}
+                        <div class="swiper-slide">
+                            <img src="/images/hero-gallery-0{{i}}.png" alt="">
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
             <div class="swiper-controls">
                 <div class="swiper-button-prev">
