@@ -225,19 +225,22 @@ window.addEventListener('resize', () => {
 window.onload = () => {
     // RUNNING LINE
     const runningLineEl = document.querySelector(".running-line");
-    new RunningLine(runningLineEl).init()
+    if (runningLineEl) {
 
-    if (window.ScrollTrigger ) {
-        gsap.registerPlugin(ScrollTrigger) 
-        gsap.to(".running-line__wrapper", {
-            scrollTrigger: {
-                trigger: ".running-line__wrapper",
-                start: "top 50%",
-                end: "top 20%",
-                scrub: 1
-            },
-            xPercent: -10,
-        })
+        new RunningLine(runningLineEl).init()
+    
+        if (window.ScrollTrigger ) {
+            gsap.registerPlugin(ScrollTrigger) 
+            gsap.to(".running-line__wrapper", {
+                scrollTrigger: {
+                    trigger: ".running-line__wrapper",
+                    start: "top 50%",
+                    end: "top 20%",
+                    scrub: 1
+                },
+                xPercent: -10,
+            })
+        }
     }
 }
 document.addEventListener("DOMContentLoaded", () => {

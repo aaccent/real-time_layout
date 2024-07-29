@@ -69,6 +69,7 @@
         left: 0;
         right: 0;
         transform: translate(0, -10%);
+        overflow: hidden;
         opacity: 0;
         visibility: hidden;
         transition: all 0.25s ease 0s;
@@ -77,9 +78,30 @@
     &__list-item {
         border-top: rem(1) solid #EBEBEB;
         padding: rem(22) 0;
+        position: relative;
+        z-index: 1;
         &--active {
             color: var(--red);
             pointer-events: none;
+        }
+        &::before {
+            background-color: #EBEBEB;
+            content: "";
+            position: absolute;
+            top: rem(-1);
+            left: rem(-30);
+            width: calc(100% + 2 * rem(30));
+            height: calc(100% + 2 * rem(1));
+            opacity: 0;
+            transition: opacity 0.2s ease 0s;
+            z-index: -1;
+        }
+        @include ishover {
+            &:not(.dropdown__list-item--active) {
+                &::before {
+                    opacity: 1;
+                }
+            }
         }
     }
     &--open {
