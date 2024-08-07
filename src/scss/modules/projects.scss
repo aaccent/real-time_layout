@@ -77,6 +77,7 @@
         .swiper-slide {
             border: rem(5) solid var(--white);
             border-radius: 50%;
+            cursor: pointer;
             width: rem(65);
             height: rem(65);
             opacity: 0.15;
