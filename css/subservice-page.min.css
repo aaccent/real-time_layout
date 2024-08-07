@@ -176,11 +176,24 @@ object {
   --cookies-z-index: 18;
   --preloader-z-index: 20;
   --container-padding: 0.9375rem;
+  --font-size: 16px;
+  --init-width: 1680;
+  --init-width_units: calc(var(--init-width) * 1px);
+}
+@media screen and (min-width: 1680px) {
+  :root {
+    --screen-diff: calc((100vw - var(--init-width_units))/var(--init-width));
+    --font-size: calc(16px + 16 * var(--screen-diff));
+  }
 }
 @media (max-width: 576px) {
   :root {
     --container-padding: 0.625rem;
   }
+}
+
+html {
+  font-size: var(--font-size);
 }
 
 body {
@@ -194,6 +207,9 @@ body {
 body._lock {
   height: 100%;
   overflow: hidden;
+}
+body > .container {
+  overflow-x: hidden;
 }
 @media (max-width: 576px) {
   body {
@@ -215,6 +231,7 @@ body._lock {
   opacity: 0;
   transform: translate(-50%, -150%);
   transition: transform 0.8s ease 0s, opacity 0.8s ease 0s;
+  height: 5.0625rem;
 }
 .preloader__progress {
   display: flex;
@@ -428,7 +445,7 @@ body._lock {
   margin: 0 auto;
   padding: 0 var(--container-padding, 0.9375rem);
   width: 100%;
-  max-width: 1680px;
+  max-width: 105rem;
 }
 
 .section:not(:first-child) {
@@ -2001,6 +2018,7 @@ body._lock {
 .projects__thumb-swiper .swiper-slide {
   border: 0.3125rem solid var(--white);
   border-radius: 50%;
+  cursor: pointer;
   width: 4.0625rem;
   height: 4.0625rem;
   opacity: 0.15;
