@@ -183,13 +183,11 @@ class RunningLine {
 
     insertItems() {
         this.elem.append(this.item.cloneNode(true))
-        console.log("inserted")
     }
 
     updateValues() {
         this.breakpoint = this.elem.offsetWidth / 2 + 0.5;
         this.mediaQuery = window.matchMedia(`(min-width: ${this.breakpoint}px)`);
-        // console.log("breakpoint", this.breakpoint)
     }
 
     handleChangeMediaQuery = (e) => {
@@ -464,7 +462,6 @@ document.addEventListener("DOMContentLoaded", () => {
     replaceCity(gapMediaQuery)
 
     // RUNNING LINE
-    console.log("width", window.innerWidth)
     const runningLineEl = document.querySelector(".running-line");
     // new RunningLine(runningLineEl).init()
  
@@ -574,7 +571,6 @@ document.addEventListener("DOMContentLoaded", () => {
     Array.from(dropdownEls).forEach(dropdownEl => {
         dropdownEl.addEventListener("click", e => {
             const targetEl = e.target;
-            console.log(targetEl)
             if (targetEl.closest(".dropdown__header")) {
                 dropdownEl.classList.toggle("dropdown--open")
                 if (phoneMediaQuery.matches) {
@@ -685,7 +681,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // POPUPs
-    const consultationButtonEls = document.querySelectorAll(".header__call, .footer__call")
+    const consultationButtonEls = document.querySelectorAll(".header__call, .footer__call, .calculate-button")
     const citiesButtonEl = document.querySelectorAll(".header__city, .footer__city")
 
     const consultationPopupEl = document.querySelector(".popup--consultation");
