@@ -66,6 +66,9 @@ body {
         height: 100%;
         overflow: hidden;
     }
+    & > .container {
+        overflow-x: hidden;
+    }
     @include phone {
         font-size: rem(14);
     }
@@ -84,6 +87,7 @@ body {
         opacity: 0;
         transform: translate(-50%, -150%);
         transition: transform 0.8s ease 0s, opacity 0.8s ease 0s;
+        height: rem(81);
     }
     &__progress {
         display: flex;

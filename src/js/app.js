@@ -127,7 +127,7 @@ function initMap(mapContainerId) {
 
         // добавление пинов на карту
         new mapboxgl.Marker(marker)
-            .setLngLat(center)
+            .setLngLat(coords)
             .addTo(map);
     }
 
@@ -138,7 +138,7 @@ function initMap(mapContainerId) {
     }
     
     let mapEl = document.getElementById(mapContainerId);
-    let center = mapEl?.dataset.center?.split(',').map(Number) || [37.55419429026398, 55.657224400550575];
+    let center = mapEl?.dataset.center?.split(',').map(Number) || [37.55419429026398, 55.656224400550575];
 
     // создание карты
     mapboxgl.accessToken = "pk.eyJ1Ijoic2V2YS1hYWNjZW50IiwiYSI6ImNsd3lubWViZTFwMDAycXNhbm4yN3p4am0ifQ.puvbO9AAr4Jf8ude29ST7g";

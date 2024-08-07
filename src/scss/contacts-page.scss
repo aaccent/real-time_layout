@@ -88,6 +88,10 @@
             width: calc(100% - 2 * rem(10));
             height: 50%;
         }
+        .mapboxgl-scroll-zoom-blocker, .mapboxgl-touch-pan-blocker {
+            top: -50%;
+            height: 150%
+        }
     }
 }
 @import "modules/contact-us.scss";
