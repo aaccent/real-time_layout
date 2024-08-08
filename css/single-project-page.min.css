@@ -1452,6 +1452,7 @@ body > .container {
   background-color: var(--white);
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
   padding-left: 24.4848484848%;
   position: absolute;
   top: 0;

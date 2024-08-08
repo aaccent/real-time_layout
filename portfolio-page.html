@@ -1817,9 +1817,32 @@
     <script src="js/libs/swiper-bundle.min.js"></script>
     
         <script>
+            function calculateDesktopMenuSize() {
+                document.documentElement.style.setProperty('--header-width', `${desktopMenuEl.offsetWidth}px`);
+                document.documentElement.style.setProperty('--header-height', `${desktopMenuEl.offsetHeight}px`);
+            }
+            function handleDesktopBreakpointChange(e) {
+                if (!e.matches && !document.documentElement.style.getPropertyValue('--header-width')) {
+                    calculateDesktopMenuSize()
+                }
+            }
+            function handleContainerBreakpointChange(e) {
+                if (e.matches) {
+                    window.addEventListener("resize", calculateDesktopMenuSize)
+                } else {
+                    window.removeEventListener("resize", calculateDesktopMenuSize)
+                }
+            }
+
             var desktopMenuEl = document.querySelector(".header__menu--desktop");
-            document.documentElement.style.setProperty('--header-width', `${desktopMenuEl.offsetWidth}px`);
-            document.documentElement.style.setProperty('--header-height', `${desktopMenuEl.offsetHeight}px`);
+            var containerMediaQuery = window.matchMedia("(min-width: 1680px)");
+            var desktopMediaQuery = window.matchMedia("(max-width: 1440px)")
+
+            desktopMediaQuery.addEventListener("change", handleDesktopBreakpointChange)
+            containerMediaQuery.addEventListener("change", handleContainerBreakpointChange)
+
+            handleDesktopBreakpointChange(desktopMediaQuery)
+            handleContainerBreakpointChange(containerMediaQuery)
         </script>
         <script src="js/app.min.js"></script>
     
