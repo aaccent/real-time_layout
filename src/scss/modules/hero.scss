@@ -73,6 +73,7 @@
     display: flex;
     position: relative;
     height: calc(var(--vh, 1vh) * 100);
+    min-height: rem(735);
     max-height: rem(945);
     &__container {
     }
@@ -138,6 +139,7 @@
         padding-top: rem(15);
         // padding-bottom: rem(15);
         height: auto;
+        min-height: unset;
         &__container {
         }
         &__content-swiper, &__gallery-swiper {

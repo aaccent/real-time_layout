@@ -649,6 +649,7 @@
         background-color: var(--white);
         display: flex;
         justify-content: space-between;
+        gap: rem(16);
         padding-left: calc(404 / 1650 * 100%);
         position: absolute;
         top: 0;
