@@ -1679,9 +1679,25 @@ body > .container {
   height: calc(100% - 3.75rem);
   z-index: 2;
 }
+@media screen and (min-width: 992.02px) and (max-width: 1680px) {
+  .map .mapboxgl-scroll-zoom-blocker, .map .mapboxgl-touch-pan-blocker {
+    justify-content: flex-end;
+    padding-right: calc(38px + 292 * (100vw - 992.02px) / 687.98);
+  }
+  .map__contact-info {
+    width: 40.847983454%;
+    max-width: 31.25rem;
+  }
+}
 @media (max-width: 992px) {
   .map__contact-info {
     left: 1.25rem;
+    width: calc(100% - 1.25rem);
+    height: 50%;
+  }
+  .map .mapboxgl-scroll-zoom-blocker, .map .mapboxgl-touch-pan-blocker {
+    top: -50%;
+    height: 150%;
   }
 }
 @media (max-width: 576px) {
@@ -1691,8 +1707,6 @@ body > .container {
   .map__contact-info {
     left: 0.625rem;
     bottom: 0.625rem;
-    width: calc(100% - 1.25rem);
-    height: 50%;
   }
   .map .mapboxgl-scroll-zoom-blocker, .map .mapboxgl-touch-pan-blocker {
     top: -50%;
