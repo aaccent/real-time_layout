@@ -71,9 +71,26 @@
         height: calc(100% - 2 * rem(30));
         z-index: 2;
     }
+    @media screen and (min-width: 992.02px) and (max-width: 1680px) {
+        .mapboxgl-scroll-zoom-blocker, .mapboxgl-touch-pan-blocker {
+            justify-content: flex-end;
+            // padding-right: 20%;
+            padding-right: calc(38px + 292 * (100vw - 992.02px) / (1680 - 992.02));
+        }
+        &__contact-info {
+            width: calc(395 / 967 * 100%);
+            max-width: rem(500);
+        }
+    }
     @include tablet {
         &__contact-info {
             left: rem(20);
+            width: calc(100% - 2 * rem(10));
+            height: 50%;
+        }
+        .mapboxgl-scroll-zoom-blocker, .mapboxgl-touch-pan-blocker {
+            top: -50%;
+            height: 150%
         }
     }
     @include phone {
@@ -85,8 +102,6 @@
         &__contact-info {
             left: rem(10);
             bottom: rem(10) ;
-            width: calc(100% - 2 * rem(10));
-            height: 50%;
         }
         .mapboxgl-scroll-zoom-blocker, .mapboxgl-touch-pan-blocker {
             top: -50%;
