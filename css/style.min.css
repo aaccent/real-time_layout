@@ -170,8 +170,8 @@ object {
   --grey: #EEEEEE;
   --background-color: #F3F3F3;
   --backdrop-bg: #111113;
-  --header-z-index: 10;
   --dropdown-z-index: 12;
+  --header-z-index: 13;
   --popup-z-index: 15;
   --cookies-z-index: 18;
   --preloader-z-index: 20;
