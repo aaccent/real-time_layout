@@ -5,7 +5,7 @@
         {% else %}
             <h2 class="hero-info__title">Проектирование ресторанов, баров и кафе в торговых центрах</h2>
         {% endif %}
-        <a href="/single-service-page.html" class="hero-info__button button button--white">
+        <a href="./single-service-page.html" class="hero-info__button button button--white">
             <span class="button__label">Узнать подробнее</span>
             <div class="button__arrow">
                 {# <object data="/images/svg-icons/button-arrow.svg" type="image/svg+xml"></object> #}
@@ -24,7 +24,7 @@
 
 {% macro GallerySlide(index) %}
     <div class="hero__image">
-        <img src="/images/hero-gallery-0{{index}}.png" alt="">
+        <img src="./images/hero-gallery-0{{index}}.png" alt="">
     </div>
 {% endmacro %}
 
@@ -54,7 +54,7 @@
                 <div class="swiper-wrapper">
                     {% for i in range(1, 4) %}
                         <div class="swiper-slide">
-                            <img src="/images/hero-gallery-0{{i}}.png" alt="">
+                            <img src="./images/hero-gallery-0{{i}}.png" alt="">
                         </div>
                     {% endfor %}
                 </div>

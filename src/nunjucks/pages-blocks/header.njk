@@ -31,14 +31,14 @@
                                             <div class="submenu__menu-col">
                                                 {% for item in submenu_column %}
                                                     <li class="submenu__menu-item">
-                                                        <a href="/subservice-page.html" class="submenu__menu-link">{{ item }}</a>
+                                                        <a href="./subservice-page.html" class="submenu__menu-link">{{ item }}</a>
                                                     </li>
                                                 {% endfor %}
                                             </div>
                                         {% endfor %}
                                     </ul>
                                     <div class="submenu__image">
-                                        <img src="/images/submenu.png" alt="">
+                                        <img src="./images/submenu.png" alt="">
                                     </div>
                                 </div>
                             </li>
@@ -46,7 +46,7 @@
                         </ul>
                     </div>
                     <div>
-                        <object data="/images/submenu-icon.svg" type="image/svg+xml"></object>
+                        <object data="./images/submenu-icon.svg" type="image/svg+xml"></object>
                     </div>
                 </div>
             </div>
@@ -83,13 +83,13 @@
                                                     <ul class="submenu__menu-list">
                                                         {% for item in submenu_column %}
                                                             <li class="submenu__menu-item">
-                                                                <a href="/subservice-page.html" class="submenu__menu-link">{{ item }}</a>
+                                                                <a href="./subservice-page.html" class="submenu__menu-link">{{ item }}</a>
                                                             </li>
                                                         {% endfor %}
                                                     </ul>
                                                 </div>
                                             {% else %}
-                                                <a href="/single-service-page.html" class="submenu__link">{{ item.category }}</a>
+                                                <a href="./single-service-page.html" class="submenu__link">{{ item.category }}</a>
                                             {% endif %}
                                         </li>
                                     {% endfor %}
@@ -178,9 +178,9 @@
 
 <header class="header">
     <div class="header__main">
-        <a href="/" class="header__logo">
-            <object data="/images/logo.svg" type="image/svg+xml"></object>
-            <object data="/images/logo-hover.svg" type="image/svg+xml"></object>
+        <a href="./" class="header__logo">
+            <object data="./images/logo.svg" type="image/svg+xml"></object>
+            <object data="./images/logo-hover.svg" type="image/svg+xml"></object>
         </a>
         <div class="header__city">
             <svg class="header__city-icon">
@@ -194,9 +194,9 @@
     </div>
     {% set menu_items = [
         {label: "Услуги", href: "#"},
-        {label: "Портфолио", href: "/portfolio-page.html"},
-        {label: "О компании", href: "/about-page.html"},
-        {label: "Контакты", href: "/contacts-page.html"}
+        {label: "Портфолио", href: "./portfolio-page.html"},
+        {label: "О компании", href: "./about-page.html"},
+        {label: "Контакты", href: "./contacts-page.html"}
     ] %}
     {{ Menu(menu_items )}}
     {{ MobileMenu(menu_items) }}
