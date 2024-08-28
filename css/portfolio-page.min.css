@@ -1695,7 +1695,7 @@ body > .container {
 .submenu__list-item {
   transition: background-color 0.2s ease 0s, color 0.2s ease 0s;
 }
-.submenu__list-item > span {
+.submenu__list-item > span, .submenu__list-item > a {
   cursor: pointer;
   color: var(--black);
   font-weight: 600;
