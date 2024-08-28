@@ -24,7 +24,8 @@
                         <ul class="header__submenu-list submenu__list">
                             {% for item in items %}
                             <li class="submenu__list-item">
-                                <span>{{ item.category }}</span>
+                                {# <span>{{ item.category }}</span> #}
+                                <a href="./single-service-page.html">{{ item.category }}</a>
                                 <div class="submenu__list-item-content">
                                     <ul class="submenu__menu">
                                         {% for i in range(0, 2) %}
